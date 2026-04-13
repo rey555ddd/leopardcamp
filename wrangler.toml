@@ -1,0 +1,12 @@
+name = "leopardcamp"
+compatibility_date = "2024-12-30"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "leopardcamp-db"
+database_id = "62924918-55d7-4996-bdfc-fc8a34eabc05"
+
+[vars]
+ADMIN_USERNAME = "ABC2026"
+ADMIN_PASSWORD = "2026ABC"

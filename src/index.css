@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Noto Sans TC", "DM Sans", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --color-sky: oklch(0.67 0.15 230);
+  --color-yellow-accent: oklch(0.92 0.18 100);
+}
+
+:root {
+  --radius: 0.65rem;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-white text-gray-900;
+    font-family: "Noto Sans TC", "DM Sans", sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (max-width: 767px) {
+  footer {
+    padding-bottom: 4.5rem;
+  }
+}

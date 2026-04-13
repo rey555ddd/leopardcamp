@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS registrations (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  childName TEXT NOT NULL,
+  childGender TEXT NOT NULL,
+  childAge INTEGER NOT NULL,
+  childBirthday TEXT NOT NULL,
+  childIdNumber TEXT NOT NULL,
+  jerseySize TEXT NOT NULL,
+  jerseyName TEXT NOT NULL,
+  jerseyNumber TEXT NOT NULL,
+  dietType TEXT NOT NULL,
+  dietNote TEXT,
+  guardianName TEXT NOT NULL,
+  guardianPhone TEXT NOT NULL,
+  emergencyName TEXT NOT NULL,
+  emergencyPhone TEXT NOT NULL,
+  parentLineId TEXT NOT NULL,
+  createdAt TEXT NOT NULL DEFAULT (datetime('now'))
+);
