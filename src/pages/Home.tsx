@@ -93,7 +93,7 @@ export default function Home() {
         <div className="container flex items-center justify-between h-16 sm:h-20">
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
             <img src={IMAGES.logo} alt="豹子腿棒球夏令營 Logo" className="w-9 h-9 sm:w-12 sm:h-12 object-contain" />
-            <span className="text-base sm:text-xl font-black text-gray-900">豹子腿棒球夏令營</span>
+            <span className="text-base sm:text-xl font-black text-gray-900">2026 豹子腿棒球夏令營</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <a href="#highlights" className="text-gray-700 font-semibold hover:text-[#3FA9F5] transition-colors">營隊亮點</a>
