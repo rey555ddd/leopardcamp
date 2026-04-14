@@ -37,6 +37,30 @@ export default function AdminRegistrations() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [exporting, setExporting] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+
+  const handleDelete = async (id: number, name: string) => {
+    if (!confirm(`確定要刪除「#${id} ${name}」的報名資料嗎？此操作無法復原。`)) return;
+    setDeletingId(id);
+    try {
+      const token = sessionStorage.getItem("admin-token");
+      const res = await fetch("/api/admin/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "刪除失敗");
+      setRegistrations((prev) => prev.filter((r) => r.id !== id));
+    } catch (err: any) {
+      alert("刪除失敗：" + (err.message || "請重試"));
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   // Check if already logged in
   useEffect(() => {
@@ -252,13 +276,22 @@ export default function AdminRegistrations() {
           <div className="space-y-6">
             {registrations.map((reg) => (
               <div key={reg.id} className="bg-white rounded-2xl shadow-md p-6 sm:p-8 border-l-4 border-[#3FA9F5]">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
                   <h3 className="text-xl font-black text-gray-900">
                     #{reg.id} {reg.childName}
                   </h3>
-                  <span className="text-xs text-gray-500">
-                    {new Date(reg.createdAt).toLocaleString("zh-TW")}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-gray-500">
+                      {new Date(reg.createdAt).toLocaleString("zh-TW")}
+                    </span>
+                    <button
+                      onClick={() => handleDelete(reg.id, reg.childName)}
+                      disabled={deletingId === reg.id}
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-1.5 rounded-lg border border-red-200 text-sm font-semibold transition-colors disabled:opacity-50"
+                    >
+                      {deletingId === reg.id ? "刪除中…" : "🗑 刪除"}
+                    </button>
+                  </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
