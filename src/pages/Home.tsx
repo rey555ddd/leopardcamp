@@ -560,7 +560,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center">
-            <p className="text-gray-500 text-xs sm:text-sm">© 2026 豹子腿棒球夏令營。版權所有。</p>
+            <p className="text-gray-500 text-xs sm:text-sm">© 2026 豹子腿棒球夏令營 · 版權所有。</p>
           </div>
         </div>
       </footer>
