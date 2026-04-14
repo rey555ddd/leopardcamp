@@ -451,29 +451,34 @@ export default function Home() {
                 <div className="md:col-span-2">
                   <div className="bg-gradient-to-br from-[#FCEE21]/10 to-[#3FA9F5]/10 p-5 sm:p-8 rounded-2xl border-2 border-[#FCEE21]/30 h-full">
                     <h4 className="text-xl sm:text-3xl font-black text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-                      <span className="text-2xl sm:text-4xl">🏆</span> 限量球員卡 & 成長卡
+                      <span className="text-2xl sm:text-4xl">🏆</span> 限量球員卡 & 專屬定製球員卡
                     </h4>
                     <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-8">
-                      <div className="bg-white p-3 sm:p-4 rounded-lg shadow-lg border-2 border-[#3FA9F5]/20">
-                        <img src={IMAGES.cardFront} alt="球員卡正面" className="w-full h-40 sm:h-64 object-contain rounded mb-2 sm:mb-3" />
-                        <p className="text-xs sm:text-sm font-bold text-gray-900 text-center">球員卡正面</p>
+                      <div>
+                        <div className="aspect-[1.586/1] rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
+                          <img src={IMAGES.cardFront} alt="球員卡正面" className="w-full h-full object-contain" />
+                        </div>
+                        <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡正面</p>
                       </div>
-                      <div className="bg-white p-3 sm:p-4 rounded-lg shadow-lg border-2 border-[#3FA9F5]/20">
-                        <img src={IMAGES.cardBack} alt="球員卡背面" className="w-full h-40 sm:h-64 object-contain rounded mb-2 sm:mb-3" />
-                        <p className="text-xs sm:text-sm font-bold text-gray-900 text-center">球員卡背面</p>
+                      <div>
+                        <div className="aspect-[1.586/1] bg-white rounded-lg shadow-lg border-2 border-[#3FA9F5]/20 p-2 sm:p-3 flex items-center justify-center">
+                          <img src={IMAGES.cardBack} alt="球員卡背面" className="max-w-full max-h-full object-contain" />
+                        </div>
+                        <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡背面</p>
                       </div>
                     </div>
                     <p className="text-sm sm:text-base text-gray-600 font-semibold mb-1 sm:mb-2">獨一無二 / 數據紀錄</p>
                     <p className="text-xs sm:text-sm text-gray-500">
-                      每位參加者都會獲得個人專屬的球員成長卡，記錄四天的進步數據。
+                      每位參加者都會獲得個人專屬的定製球員卡，記錄四天的進步數據。
                     </p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
                   <div className="bg-gray-50 p-4 sm:p-6 rounded-xl border-l-4 border-[#3FA9F5]">
                     <h4 className="text-lg sm:text-2xl font-black text-gray-900 mb-3 sm:mb-4">專屬球帽</h4>
-                    <div className="w-28 h-22 sm:w-40 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-lg overflow-hidden shadow-lg">
+                    <div className="relative w-28 h-22 sm:w-40 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-lg overflow-hidden shadow-lg">
                       <img src={IMAGES.hat} alt="專屬球帽" className="w-full h-full object-cover" />
+                      <img src={IMAGES.logo} alt="FANG Logo" className="absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2 w-8 sm:w-12 h-auto object-contain drop-shadow-md pointer-events-none" />
                     </div>
                     <p className="text-xs sm:text-base text-gray-600 font-semibold">立體刺繡 / 可調式</p>
                   </div>
