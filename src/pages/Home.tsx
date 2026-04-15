@@ -469,66 +469,93 @@ export default function Home() {
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡正面</p>
                       </div>
 
-                      {/* ===== 背面 — HTML/SVG 重繪，aspect 跟正面一致（5:7 標準球員卡比例）===== */}
+                      {/* ===== 背面 v6 — 2x3 統計方格 + 閃電裝飾 + 金彩帶 + 去底 logo ===== */}
                       <div>
-                        <div className="aspect-[5/7] relative rounded-xl shadow-lg overflow-hidden" style={{ background: "linear-gradient(180deg, #1c2f4d 0%, #0a172d 100%)" }}>
-                          {/* SVG 定義（漸層 + 陰影）*/}
-                          <svg width="0" height="0" style={{ position: "absolute" }}>
+                        <div className="aspect-[5/7] relative rounded-xl shadow-lg overflow-hidden"
+                          style={{
+                            background: "radial-gradient(ellipse 90% 70% at 50% 30%, #2a4876 0%, #0a172d 70%)",
+                          }}>
+                          {/* SVG 漸層定義 */}
+                          <svg width="0" height="0" className="absolute">
                             <defs>
-                              <linearGradient id="nameGrad" x1="0" y1="0" x2="0" y2="1">
+                              <linearGradient id="goldName" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="0%" stopColor="#FFF3B0" />
-                                <stop offset="45%" stopColor="#FCEE21" />
+                                <stop offset="50%" stopColor="#FCEE21" />
                                 <stop offset="100%" stopColor="#B8860B" />
                               </linearGradient>
-                              <filter id="nameGlow">
-                                <feGaussianBlur stdDeviation="1.5" result="blur" />
-                                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-                              </filter>
+                              <linearGradient id="goldNum" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#FFF8C4" />
+                                <stop offset="100%" stopColor="#E6C56A" />
+                              </linearGradient>
                             </defs>
                           </svg>
 
-                          {/* 金色外框 + 四角裝飾 */}
-                          <div className="absolute inset-[4%] border-[1.5px] border-[#C9A24C]/70 rounded-md pointer-events-none" />
-                          <div className="absolute top-[3.5%] left-[3.5%] w-[9%] h-[6%] border-t-2 border-l-2 border-[#E6C56A]" />
-                          <div className="absolute top-[3.5%] right-[3.5%] w-[9%] h-[6%] border-t-2 border-r-2 border-[#E6C56A]" />
-                          <div className="absolute bottom-[3.5%] left-[3.5%] w-[9%] h-[6%] border-b-2 border-l-2 border-[#E6C56A]" />
-                          <div className="absolute bottom-[3.5%] right-[3.5%] w-[9%] h-[6%] border-b-2 border-r-2 border-[#E6C56A]" />
+                          {/* 裝飾 — 閃電（與正面呼應） */}
+                          <svg viewBox="0 0 100 100" className="absolute top-[8%] left-[2%] w-[32%] opacity-[0.12] -rotate-12" preserveAspectRatio="none">
+                            <path d="M60 5 L15 48 L42 48 L28 95 L78 42 L48 42 Z" fill="#FCEE21" />
+                          </svg>
+                          <svg viewBox="0 0 100 100" className="absolute bottom-[22%] right-[2%] w-[32%] opacity-[0.10] rotate-[160deg]" preserveAspectRatio="none">
+                            <path d="M60 5 L15 48 L42 48 L28 95 L78 42 L48 42 Z" fill="#3FA9F5" />
+                          </svg>
 
-                          {/* 姓名（金漸層 + 外發光）*/}
-                          <div className="absolute top-[8%] left-0 right-0 text-center">
-                            <svg viewBox="0 0 200 50" className="w-[60%] mx-auto block">
-                              <text
-                                x="100" y="36" textAnchor="middle"
-                                fontSize="38" fontWeight="900"
-                                fontFamily="'Noto Sans TC','Inter',sans-serif"
-                                fill="url(#nameGrad)"
-                                stroke="#5c3d00" strokeWidth="0.8"
-                                style={{ paintOrder: "stroke", letterSpacing: "0.1em" }}
-                                filter="url(#nameGlow)"
-                              >小翔平</text>
+                          {/* 金色外框 + 四角裝飾 */}
+                          <div className="absolute inset-[3%] border-[1.5px] border-[#C9A24C]/60 rounded-lg pointer-events-none" />
+                          <div className="absolute top-[2.5%] left-[2.5%] w-[10%] h-[7%] border-t-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
+                          <div className="absolute top-[2.5%] right-[2.5%] w-[10%] h-[7%] border-t-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
+                          <div className="absolute bottom-[2.5%] left-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
+                          <div className="absolute bottom-[2.5%] right-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
+
+                          {/* 姓名區（頂部 6%~20%）*/}
+                          <div className="absolute top-[5.5%] left-0 right-0 text-center">
+                            <svg viewBox="0 0 200 56" className="w-[60%] mx-auto block">
+                              <text x="100" y="42" textAnchor="middle"
+                                fontSize="40" fontWeight="900"
+                                fontFamily="'Noto Sans TC',sans-serif"
+                                fill="url(#goldName)"
+                                stroke="#5c3d00" strokeWidth="1"
+                                style={{ paintOrder: "stroke", letterSpacing: "0.08em" }}>
+                                小翔平
+                              </text>
                             </svg>
-                            <div className="text-white/95 font-semibold text-[2.6vw] sm:text-sm mt-[2%] tracking-[0.3em]">右打 / 右投</div>
+                            {/* 分隔線 */}
+                            <div className="mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E6C56A]/70 to-transparent my-[1%]" />
+                            <div className="text-white/90 font-semibold text-[2.6vw] sm:text-[13px] tracking-[0.4em]">右打 / 右投</div>
                           </div>
 
-                          {/* SVG 雷達圖 + 6 項數據（固定置中於 23%~63%）*/}
+                          {/* 雷達圖（遊戲卡風格，標籤在上、數字在下堆疊）*/}
                           <svg
-                            viewBox="-150 -170 300 340"
-                            className="absolute left-[50%] -translate-x-1/2 w-[85%]"
-                            style={{ top: "23%", height: "43%" }}
+                            viewBox="-170 -160 340 320"
+                            className="absolute left-[50%] -translate-x-1/2"
+                            style={{ top: "23%", width: "94%", height: "48%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
-                            {[100, 67, 33].map((r, i) => {
+                            <defs>
+                              <radialGradient id="dataFill" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stopColor="#FCEE21" stopOpacity="0.7" />
+                                <stop offset="100%" stopColor="#B8860B" stopOpacity="0.35" />
+                              </radialGradient>
+                              <filter id="dataGlow">
+                                <feGaussianBlur stdDeviation="2" result="b" />
+                                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                              </filter>
+                            </defs>
+
+                            {/* 三層六邊形參考網 */}
+                            {[100, 70, 40].map((r, i) => {
                               const pts = [270, 330, 30, 90, 150, 210].map(a => {
                                 const rad = (a * Math.PI) / 180;
                                 return `${r * Math.cos(rad)},${r * Math.sin(rad)}`;
                               }).join(" ");
-                              return <polygon key={i} points={pts} fill="none" stroke="#E6C56A" strokeWidth="0.7" opacity={0.35 - i * 0.08} />;
+                              return <polygon key={i} points={pts} fill={i === 0 ? "rgba(0,0,0,0.25)" : "none"} stroke="#E6C56A" strokeWidth="0.8" strokeDasharray={i === 0 ? "" : "2 3"} opacity={0.45 - i * 0.08} />;
                             })}
+
+                            {/* 6 條軸線 */}
                             {[270, 330, 30, 90, 150, 210].map((a, i) => {
                               const rad = (a * Math.PI) / 180;
-                              return <line key={i} x1="0" y1="0" x2={100 * Math.cos(rad)} y2={100 * Math.sin(rad)} stroke="#E6C56A" strokeWidth="0.5" opacity="0.3" />;
+                              return <line key={i} x1="0" y1="0" x2={100 * Math.cos(rad)} y2={100 * Math.sin(rad)} stroke="#E6C56A" strokeWidth="0.4" opacity="0.25" />;
                             })}
-                            {/* 實際數據 */}
+
+                            {/* 數據多邊形（金色發光）*/}
                             <polygon
                               points={[
                                 { v: 62, a: 270 }, { v: 71, a: 330 }, { v: 76, a: 30 },
@@ -537,11 +564,22 @@ export default function Home() {
                                 const rad = (a * Math.PI) / 180;
                                 return `${v * Math.cos(rad)},${v * Math.sin(rad)}`;
                               }).join(" ")}
-                              fill="rgba(252,238,33,0.4)"
+                              fill="url(#dataFill)"
                               stroke="#FCEE21"
-                              strokeWidth="2.2"
+                              strokeWidth="2.5"
+                              filter="url(#dataGlow)"
                             />
-                            {/* 標籤（外圈）+ 數字（內圈，在六邊形邊上）*/}
+
+                            {/* 頂點小圓點 */}
+                            {[
+                              { v: 62, a: 270 }, { v: 71, a: 330 }, { v: 76, a: 30 },
+                              { v: 80, a: 90 }, { v: 68, a: 150 }, { v: 85, a: 210 },
+                            ].map(({ v, a }, i) => {
+                              const rad = (a * Math.PI) / 180;
+                              return <circle key={i} cx={v * Math.cos(rad)} cy={v * Math.sin(rad)} r="2.5" fill="#FCEE21" stroke="#5c3d00" strokeWidth="0.6" />;
+                            })}
+
+                            {/* 標籤（上）+ 數字（正下方）堆疊 */}
                             {[
                               { label: "投球速度", v: 62, a: 270 },
                               { label: "打擊速度", v: 71, a: 330 },
@@ -551,47 +589,70 @@ export default function Home() {
                               { label: "體能",     v: 85, a: 210 },
                             ].map((s, i) => {
                               const rad = (s.a * Math.PI) / 180;
-                              const lr = 138;
-                              const nr = 112;
-                              const lx = lr * Math.cos(rad);
-                              const ly = lr * Math.sin(rad);
-                              const nx = nr * Math.cos(rad);
-                              const ny = nr * Math.sin(rad);
+                              const r = 130;
+                              const cx = r * Math.cos(rad);
+                              const cy = r * Math.sin(rad);
                               return (
                                 <g key={i}>
-                                  <text x={lx} y={ly} textAnchor="middle" dominantBaseline="middle"
-                                    fill="#E6C56A" fontSize="15" fontWeight="600"
-                                    fontFamily="'Noto Sans TC',sans-serif">{s.label}</text>
-                                  <text x={nx} y={ny + 5} textAnchor="middle" dominantBaseline="middle"
-                                    fill="#FCEE21" fontSize="20" fontWeight="900"
+                                  {/* 標籤在上 */}
+                                  <text x={cx} y={cy - 5} textAnchor="middle" dominantBaseline="middle"
+                                    fill="#E6C56A" fontSize="12" fontWeight="600"
+                                    fontFamily="'Noto Sans TC',sans-serif"
+                                    style={{ letterSpacing: "0.05em" }}>
+                                    {s.label}
+                                  </text>
+                                  {/* 數字在標籤正下方 */}
+                                  <text x={cx} y={cy + 14} textAnchor="middle" dominantBaseline="middle"
+                                    fill="url(#goldNum)"
+                                    fontSize="20" fontWeight="900"
                                     fontFamily="'Inter',sans-serif"
-                                    stroke="#0a172d" strokeWidth="3"
-                                    style={{ paintOrder: "stroke" }}>{s.v}</text>
+                                    stroke="#0a172d" strokeWidth="2.5"
+                                    style={{ paintOrder: "stroke" }}>
+                                    {s.v}
+                                  </text>
                                 </g>
                               );
                             })}
                           </svg>
 
-                          {/* 底部：FANG logo + 方昶詠簽名（獨立於雷達圖下方，不重疊）*/}
-                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[6%]" style={{ top: "73%" }}>
-                            <img src={IMAGES.logo} alt="FANG" className="w-[22%] h-auto object-contain drop-shadow-[0_2px_4px_rgba(230,197,106,0.5)]" />
+                          {/* FANG logo + 方昶詠簽名（top 70~84%）*/}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[6%]" style={{ top: "70.5%" }}>
+                            <img
+                              src={IMAGES.logo}
+                              alt="FANG"
+                              className="w-[22%] h-auto object-contain"
+                              style={{
+                                filter: "invert(1) brightness(1.15) drop-shadow(0 2px 6px rgba(230,197,106,0.4))",
+                                mixBlendMode: "lighten",
+                              }}
+                            />
                             <span
-                              className="text-white font-bold italic text-[4.2vw] sm:text-xl"
+                              className="font-bold italic text-[5vw] sm:text-2xl"
                               style={{
                                 transform: "rotate(-6deg)",
                                 fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
-                                textShadow: "0 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(255,255,255,0.4)",
-                                letterSpacing: "0.05em",
                                 color: "#FFF8D0",
+                                textShadow: "0 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(252,238,33,0.3)",
+                                letterSpacing: "0.05em",
                               }}
                             >
                               方昶詠
                             </span>
                           </div>
 
-                          {/* 最底部：夏令營名 */}
-                          <div className="absolute left-0 right-0 text-center text-[#E6C56A] font-semibold text-[2.6vw] sm:text-xs tracking-[0.3em]" style={{ bottom: "5.5%" }}>
-                            2026 豹子腿棒球夏令營
+                          {/* 金色彩帶 — 夏令營名 (底部 bottom 4~10%)*/}
+                          <div
+                            className="absolute inset-x-[10%] text-center py-[1.5%] rounded-sm"
+                            style={{
+                              bottom: "5.5%",
+                              background: "linear-gradient(90deg, transparent 0%, rgba(230,197,106,0.2) 20%, rgba(230,197,106,0.35) 50%, rgba(230,197,106,0.2) 80%, transparent 100%)",
+                              borderTop: "1px solid rgba(230,197,106,0.4)",
+                              borderBottom: "1px solid rgba(230,197,106,0.4)",
+                            }}
+                          >
+                            <span className="text-[#E6C56A] font-bold text-[2.5vw] sm:text-[12px] tracking-[0.35em]">
+                              2026 豹子腿棒球夏令營
+                            </span>
                           </div>
                         </div>
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡背面</p>
