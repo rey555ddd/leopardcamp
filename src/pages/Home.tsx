@@ -449,9 +449,11 @@ export default function Home() {
               {/* Player Cards + Hat + Socks */}
               <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
                 <div className="md:col-span-2">
-                  <div className="bg-gradient-to-br from-[#FCEE21]/10 to-[#3FA9F5]/10 p-5 sm:p-8 rounded-2xl border-2 border-[#FCEE21]/30 h-full">
-                    <h4 className="text-xl sm:text-3xl font-black text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-                      <span className="text-2xl sm:text-4xl">🏆</span> 限量球員卡 & 專屬定製球員卡
+                  <div className="bg-white p-5 sm:p-8 rounded-2xl border-2 border-gray-200 h-full">
+                    <h4 className="text-xl sm:text-3xl font-black text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 flex-wrap">
+                      <span className="text-2xl sm:text-4xl">🏆</span>
+                      <span>小球員 MVP 閃卡專屬定制</span>
+                      <span className="text-sm sm:text-base font-medium text-gray-500">（紀錄成長軌跡）</span>
                     </h4>
                     <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-8 items-start">
                       {/* 正面 — 去除包裝背景，圖片直出，與背面同寬 */}
@@ -460,37 +462,53 @@ export default function Home() {
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡正面</p>
                       </div>
 
-                      {/* 背面 — 疊加 6 項模擬數據 + 方昶詠簽名 */}
+                      {/* 背面 — 疊加 6 項模擬數據 + 方昶詠簽名 + 修正 typo */}
                       <div>
                         <div className="relative w-full">
                           <img src={IMAGES.cardBack} alt="球員卡背面" className="w-full h-auto block rounded-lg shadow-lg" />
-                          {/* 6 項模擬數值（國小生合理水平）*/}
+
+                          {/* 修正「右打打/投」typo → 用深藍 bg 蓋掉，再寫正確的「右打 / 右投」*/}
+                          <div
+                            className="absolute -translate-x-1/2 pointer-events-none flex items-center justify-center"
+                            style={{
+                              top: "21%",
+                              left: "50%",
+                              width: "48%",
+                              height: "4.5%",
+                              background: "#1c2f4d",
+                            }}
+                          >
+                            <span className="text-white font-bold text-[2.6vw] sm:text-base tracking-wide">右打 / 右投</span>
+                          </div>
+
+                          {/* 6 項模擬數值（放到中文字標籤的正下方）*/}
                           {[
-                            { v: 62, top: "35%", left: "50%" }, /* 投球速度 */
-                            { v: 71, top: "40%", left: "68%" }, /* 打擊速度 */
-                            { v: 76, top: "52%", left: "68%" }, /* 反應速度 */
-                            { v: 80, top: "58%", left: "50%" }, /* 跑壘速度 */
-                            { v: 68, top: "52%", left: "32%" }, /* 防守能力 */
-                            { v: 85, top: "40%", left: "32%" }, /* 體能 */
+                            { v: 62, top: "36%", left: "50%" }, /* 投球速度 正下方 */
+                            { v: 71, top: "45%", left: "74%" }, /* 打擊速度 下方 */
+                            { v: 76, top: "60%", left: "74%" }, /* 反應速度 下方 */
+                            { v: 80, top: "69%", left: "50%" }, /* 跑壘速度 下方 */
+                            { v: 68, top: "60%", left: "26%" }, /* 防守能力 下方 */
+                            { v: 85, top: "45%", left: "26%" }, /* 體能 下方 */
                           ].map((s, i) => (
                             <span
                               key={i}
-                              className="absolute -translate-x-1/2 -translate-y-1/2 font-black text-[#FCEE21] text-[3.2vw] sm:text-xl leading-none pointer-events-none"
+                              className="absolute -translate-x-1/2 -translate-y-1/2 font-black text-[#FCEE21] text-[2.8vw] sm:text-lg leading-none pointer-events-none"
                               style={{
                                 top: s.top,
                                 left: s.left,
-                                textShadow: "0 0 4px rgba(0,0,0,0.75), 0 1px 0 #000",
+                                textShadow: "0 0 4px rgba(0,0,0,0.85), 0 1px 0 #000",
                               }}
                             >
                               {s.v}
                             </span>
                           ))}
-                          {/* 方昶詠簽名 */}
+
+                          {/* 方昶詠簽名（緊貼卡片右下角）*/}
                           <span
-                            className="absolute text-white/95 font-bold italic text-[2.6vw] sm:text-base pointer-events-none"
+                            className="absolute text-white/95 font-bold italic text-[2.4vw] sm:text-sm pointer-events-none"
                             style={{
-                              bottom: "5%",
-                              right: "7%",
+                              bottom: "3%",
+                              right: "4%",
                               transform: "rotate(-8deg)",
                               fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
                               textShadow: "0 1px 3px rgba(0,0,0,0.6)",
@@ -512,9 +530,8 @@ export default function Home() {
                 <div className="grid grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
                   <div className="bg-gray-50 p-4 sm:p-6 rounded-xl border-l-4 border-[#3FA9F5]">
                     <h4 className="text-lg sm:text-2xl font-black text-gray-900 mb-3 sm:mb-4">專屬球帽</h4>
-                    <div className="relative w-28 h-22 sm:w-40 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-lg overflow-hidden shadow-lg">
+                    <div className="w-28 h-22 sm:w-40 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-lg overflow-hidden shadow-lg">
                       <img src={IMAGES.hat} alt="專屬球帽" className="w-full h-full object-cover" />
-                      <img src={IMAGES.logo} alt="FANG Logo" className="absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2 w-8 sm:w-12 h-auto object-contain drop-shadow-md pointer-events-none" />
                     </div>
                     <p className="text-xs sm:text-base text-gray-600 font-semibold">立體刺繡 / 可調式</p>
                   </div>
