@@ -505,9 +505,42 @@ export default function Home() {
                           <div className="absolute bottom-[2.5%] left-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
                           <div className="absolute bottom-[2.5%] right-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
 
-                          {/* 姓名區（頂部 6%~20%）*/}
-                          <div className="absolute top-[5.5%] left-0 right-0 text-center">
-                            <svg viewBox="0 0 200 56" className="w-[60%] mx-auto block">
+                          {/* 右上角：限量編號徽章 */}
+                          <div
+                            className="absolute top-[4%] right-[5%] px-[3%] py-[0.8%] rounded-sm font-bold text-[1.8vw] sm:text-[10px] tracking-wider"
+                            style={{
+                              background: "linear-gradient(135deg, #E6C56A, #B8860B)",
+                              color: "#0a172d",
+                              boxShadow: "0 2px 4px rgba(0,0,0,0.4)",
+                              letterSpacing: "0.1em",
+                            }}
+                          >
+                            #001/030
+                          </div>
+
+                          {/* 漫畫風超級英雄頭銜（姓名上方）*/}
+                          <div className="absolute top-[6%] left-0 right-0 flex justify-center">
+                            <div
+                              className="relative inline-block px-[4.5%] py-[1%] text-[2.8vw] sm:text-[14px] font-black whitespace-nowrap"
+                              style={{
+                                background: "linear-gradient(180deg, #FFE600 0%, #FF8800 50%, #E60000 100%)",
+                                color: "#1a0500",
+                                transform: "rotate(-3deg)",
+                                clipPath: "polygon(8% 0, 100% 0, 92% 100%, 0% 100%)",
+                                boxShadow: "0 3px 0 #5c1500, 0 5px 8px rgba(0,0,0,0.5)",
+                                textShadow: "0 1px 0 rgba(255,255,255,0.4)",
+                                fontFamily: "'Noto Sans TC',sans-serif",
+                                letterSpacing: "0.08em",
+                                WebkitTextStroke: "0.5px #5c1500",
+                              }}
+                            >
+                              💪 鋼鐵金剛
+                            </div>
+                          </div>
+
+                          {/* 姓名區（頂部 15%~26%）*/}
+                          <div className="absolute top-[13.5%] left-0 right-0 text-center">
+                            <svg viewBox="0 0 200 56" className="w-[58%] mx-auto block">
                               <text x="100" y="42" textAnchor="middle"
                                 fontSize="40" fontWeight="900"
                                 fontFamily="'Noto Sans TC',sans-serif"
@@ -518,15 +551,15 @@ export default function Home() {
                               </text>
                             </svg>
                             {/* 分隔線 */}
-                            <div className="mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E6C56A]/70 to-transparent my-[1%]" />
-                            <div className="text-white/90 font-semibold text-[2.6vw] sm:text-[13px] tracking-[0.4em]">右打 / 右投</div>
+                            <div className="mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E6C56A]/70 to-transparent my-[0.5%]" />
+                            <div className="text-white/90 font-semibold text-[2.4vw] sm:text-[12px] tracking-[0.4em]">右打 / 右投</div>
                           </div>
 
                           {/* 雷達圖（遊戲卡風格，標籤在上、數字在下堆疊）*/}
                           <svg
                             viewBox="-170 -160 340 320"
                             className="absolute left-[50%] -translate-x-1/2"
-                            style={{ top: "23%", width: "94%", height: "48%" }}
+                            style={{ top: "28%", width: "90%", height: "38%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
                             <defs>
@@ -615,19 +648,41 @@ export default function Home() {
                             })}
                           </svg>
 
-                          {/* FANG logo + 方昶詠簽名（top 70~84%）*/}
-                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[6%]" style={{ top: "70.5%" }}>
+                          {/* 教練留言卡（客製化、手寫感）*/}
+                          <div
+                            className="absolute left-[8%] right-[8%] p-[2.5%] rounded-md"
+                            style={{
+                              top: "66%",
+                              background: "linear-gradient(135deg, rgba(255,248,200,0.12) 0%, rgba(230,197,106,0.08) 100%)",
+                              border: "1px dashed rgba(230,197,106,0.5)",
+                              backdropFilter: "blur(2px)",
+                            }}
+                          >
+                            <div className="text-[#FCEE21] font-bold text-[1.8vw] sm:text-[10px] tracking-widest mb-[1%]">💬 COACH'S NOTE</div>
+                            <p
+                              className="text-white/95 leading-[1.55] text-[2.2vw] sm:text-[11px]"
+                              style={{
+                                fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng','Noto Sans TC',serif",
+                                letterSpacing: "0.04em",
+                              }}
+                            >
+                              小翔平：四天裡你從不敢揮棒，到主動站上打擊區，進步超大！繼續加油，未來你一定會是豹子腿最耀眼的那顆星 ⭐
+                            </p>
+                          </div>
+
+                          {/* FANG logo + 方昶詠簽名 */}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "84%" }}>
                             <img
                               src={IMAGES.logo}
                               alt="FANG"
-                              className="w-[22%] h-auto object-contain"
+                              className="w-[16%] h-auto object-contain"
                               style={{
                                 filter: "invert(1) brightness(1.15) drop-shadow(0 2px 6px rgba(230,197,106,0.4))",
                                 mixBlendMode: "lighten",
                               }}
                             />
                             <span
-                              className="font-bold italic text-[5vw] sm:text-2xl"
+                              className="font-bold italic text-[3.8vw] sm:text-lg"
                               style={{
                                 transform: "rotate(-6deg)",
                                 fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
@@ -640,11 +695,11 @@ export default function Home() {
                             </span>
                           </div>
 
-                          {/* 金色彩帶 — 夏令營名 (底部 bottom 4~10%)*/}
+                          {/* 金色彩帶 — 夏令營名 (底部 bottom 3%)*/}
                           <div
-                            className="absolute inset-x-[10%] text-center py-[1.5%] rounded-sm"
+                            className="absolute inset-x-[10%] text-center py-[1%] rounded-sm"
                             style={{
-                              bottom: "5.5%",
+                              bottom: "3%",
                               background: "linear-gradient(90deg, transparent 0%, rgba(230,197,106,0.2) 20%, rgba(230,197,106,0.35) 50%, rgba(230,197,106,0.2) 80%, transparent 100%)",
                               borderTop: "1px solid rgba(230,197,106,0.4)",
                               borderBottom: "1px solid rgba(230,197,106,0.4)",
