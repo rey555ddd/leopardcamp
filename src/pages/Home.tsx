@@ -456,67 +456,114 @@ export default function Home() {
                       <span className="text-sm sm:text-base font-medium text-gray-500">（紀錄成長軌跡）</span>
                     </h4>
                     <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-8 items-start">
-                      {/* 正面 — 去除包裝背景，圖片直出，與背面同寬 */}
+                      {/* ===== 正面 — aspect crop 去掉藍色背景 ===== */}
                       <div>
-                        <img src={IMAGES.cardFront} alt="球員卡正面" className="w-full h-auto block rounded-lg shadow-lg" />
+                        <div className="aspect-[41/50] overflow-hidden rounded-xl shadow-lg">
+                          <img
+                            src={IMAGES.cardFront}
+                            alt="球員卡正面"
+                            className="w-full h-full object-cover"
+                            style={{ objectPosition: "center" }}
+                          />
+                        </div>
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡正面</p>
                       </div>
 
-                      {/* 背面 — 疊加 6 項模擬數據 + 方昶詠簽名 + 修正 typo */}
+                      {/* ===== 背面 — 完全用 HTML/SVG 重繪（所有文字皆可編輯資料）===== */}
                       <div>
-                        <div className="relative w-full">
-                          <img src={IMAGES.cardBack} alt="球員卡背面" className="w-full h-auto block rounded-lg shadow-lg" />
+                        <div className="aspect-[41/50] relative rounded-xl shadow-lg overflow-hidden" style={{ background: "linear-gradient(180deg, #1c2f4d 0%, #0f1d35 100%)" }}>
+                          {/* 金色外框 */}
+                          <div className="absolute inset-[3%] border-[2px] border-[#C9A24C] rounded-md pointer-events-none" />
+                          {/* 四角金色裝飾 */}
+                          <div className="absolute top-[2.5%] left-[2.5%] w-[8%] h-[6%] border-t-2 border-l-2 border-[#E6C56A]" />
+                          <div className="absolute top-[2.5%] right-[2.5%] w-[8%] h-[6%] border-t-2 border-r-2 border-[#E6C56A]" />
+                          <div className="absolute bottom-[2.5%] left-[2.5%] w-[8%] h-[6%] border-b-2 border-l-2 border-[#E6C56A]" />
+                          <div className="absolute bottom-[2.5%] right-[2.5%] w-[8%] h-[6%] border-b-2 border-r-2 border-[#E6C56A]" />
 
-                          {/* 修正「右打打/投」typo → 用深藍 bg 蓋掉，再寫正確的「右打 / 右投」*/}
-                          <div
-                            className="absolute -translate-x-1/2 pointer-events-none flex items-center justify-center"
-                            style={{
-                              top: "21%",
-                              left: "50%",
-                              width: "48%",
-                              height: "4.5%",
-                              background: "#1c2f4d",
-                            }}
-                          >
-                            <span className="text-white font-bold text-[2.6vw] sm:text-base tracking-wide">右打 / 右投</span>
+                          {/* 姓名 + 打投 */}
+                          <div className="absolute top-[7%] left-0 right-0 text-center">
+                            <div className="text-[#E6C56A] font-black text-[7vw] sm:text-3xl leading-tight tracking-wide">小翔平</div>
+                            <div className="text-[#FCEE21]/90 font-bold text-[3vw] sm:text-base mt-[2%] tracking-widest">右打 / 右投</div>
                           </div>
 
-                          {/* 6 項模擬數值（放到中文字標籤的正下方）*/}
-                          {[
-                            { v: 62, top: "36%", left: "50%" }, /* 投球速度 正下方 */
-                            { v: 71, top: "45%", left: "74%" }, /* 打擊速度 下方 */
-                            { v: 76, top: "60%", left: "74%" }, /* 反應速度 下方 */
-                            { v: 80, top: "69%", left: "50%" }, /* 跑壘速度 下方 */
-                            { v: 68, top: "60%", left: "26%" }, /* 防守能力 下方 */
-                            { v: 85, top: "45%", left: "26%" }, /* 體能 下方 */
-                          ].map((s, i) => (
+                          {/* SVG 雷達圖 + 標籤 + 數字 */}
+                          <svg
+                            viewBox="-120 -140 240 280"
+                            className="absolute top-[25%] left-[50%] -translate-x-1/2 w-[90%]"
+                            preserveAspectRatio="xMidYMid meet"
+                          >
+                            {/* 六邊形背景環（三層） */}
+                            {[100, 66, 33].map((r, i) => {
+                              const pts = [270, 330, 30, 90, 150, 210].map(a => {
+                                const rad = (a * Math.PI) / 180;
+                                return `${r * Math.cos(rad)},${r * Math.sin(rad)}`;
+                              }).join(" ");
+                              return <polygon key={i} points={pts} fill="none" stroke="#E6C56A" strokeWidth="0.8" opacity={0.4 - i * 0.1} />;
+                            })}
+                            {/* 實際數據六邊形 */}
+                            <polygon
+                              points={[
+                                { v: 62, a: 270 }, { v: 71, a: 330 }, { v: 76, a: 30 },
+                                { v: 80, a: 90 }, { v: 68, a: 150 }, { v: 85, a: 210 },
+                              ].map(({ v, a }) => {
+                                const rad = (a * Math.PI) / 180;
+                                const r = v;
+                                return `${r * Math.cos(rad)},${r * Math.sin(rad)}`;
+                              }).join(" ")}
+                              fill="rgba(252,238,33,0.35)"
+                              stroke="#FCEE21"
+                              strokeWidth="2"
+                            />
+                            {/* 6 個軸線 */}
+                            {[270, 330, 30, 90, 150, 210].map((a, i) => {
+                              const rad = (a * Math.PI) / 180;
+                              return <line key={i} x1="0" y1="0" x2={100 * Math.cos(rad)} y2={100 * Math.sin(rad)} stroke="#E6C56A" strokeWidth="0.5" opacity="0.35" />;
+                            })}
+                            {/* 標籤 + 數字（每個軸向外） */}
+                            {[
+                              { label: "投球速度", v: 62, a: 270 },
+                              { label: "打擊速度", v: 71, a: 330 },
+                              { label: "反應速度", v: 76, a: 30 },
+                              { label: "跑壘速度", v: 80, a: 90 },
+                              { label: "防守能力", v: 68, a: 150 },
+                              { label: "體能",     v: 85, a: 210 },
+                            ].map((s, i) => {
+                              const rad = (s.a * Math.PI) / 180;
+                              const lr = 128; // 標籤半徑
+                              const nr = 108; // 數字半徑（靠內、在六邊形外緣）
+                              const lx = lr * Math.cos(rad);
+                              const ly = lr * Math.sin(rad);
+                              const nx = nr * Math.cos(rad);
+                              const ny = nr * Math.sin(rad);
+                              return (
+                                <g key={i}>
+                                  <text x={lx} y={ly} textAnchor="middle" dominantBaseline="middle" fill="#FCEE21" fontSize="12" fontWeight="600">{s.label}</text>
+                                  <text x={nx} y={ny + 14} textAnchor="middle" dominantBaseline="middle" fill="#FCEE21" fontSize="14" fontWeight="900" style={{ paintOrder: "stroke" }} stroke="#000" strokeWidth="2">{s.v}</text>
+                                </g>
+                              );
+                            })}
+                          </svg>
+
+                          {/* 底部：FANG logo + 方昶詠簽名 */}
+                          <div className="absolute bottom-[12%] left-0 right-0 flex items-center justify-center gap-[3%]">
+                            <img src={IMAGES.logo} alt="FANG" className="w-[22%] h-auto object-contain drop-shadow-lg" />
                             <span
-                              key={i}
-                              className="absolute -translate-x-1/2 -translate-y-1/2 font-black text-[#FCEE21] text-[2.8vw] sm:text-lg leading-none pointer-events-none"
+                              className="text-white/95 font-bold italic text-[3vw] sm:text-base"
                               style={{
-                                top: s.top,
-                                left: s.left,
-                                textShadow: "0 0 4px rgba(0,0,0,0.85), 0 1px 0 #000",
+                                transform: "rotate(-6deg)",
+                                fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
+                                textShadow: "0 1px 3px rgba(0,0,0,0.6)",
+                                letterSpacing: "0.05em",
                               }}
                             >
-                              {s.v}
+                              方昶詠
                             </span>
-                          ))}
+                          </div>
 
-                          {/* 方昶詠簽名（緊貼卡片右下角）*/}
-                          <span
-                            className="absolute text-white/95 font-bold italic text-[2.4vw] sm:text-sm pointer-events-none"
-                            style={{
-                              bottom: "3%",
-                              right: "4%",
-                              transform: "rotate(-8deg)",
-                              fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
-                              textShadow: "0 1px 3px rgba(0,0,0,0.6)",
-                              letterSpacing: "0.06em",
-                            }}
-                          >
-                            方昶詠
-                          </span>
+                          {/* 最底部：夏令營名 */}
+                          <div className="absolute bottom-[4%] left-0 right-0 text-center text-[#E6C56A] font-semibold text-[2.6vw] sm:text-xs tracking-widest">
+                            2026 豹子腿棒球夏令營
+                          </div>
                         </div>
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡背面</p>
                       </div>
