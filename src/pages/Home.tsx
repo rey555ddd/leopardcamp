@@ -505,61 +505,49 @@ export default function Home() {
                           <div className="absolute bottom-[2.5%] left-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
                           <div className="absolute bottom-[2.5%] right-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
 
-                          {/* 右上角：限量編號徽章 */}
-                          <div
-                            className="absolute top-[4%] right-[5%] px-[3%] py-[0.8%] rounded-sm font-bold text-[1.8vw] sm:text-[10px] tracking-wider"
-                            style={{
-                              background: "linear-gradient(135deg, #E6C56A, #B8860B)",
-                              color: "#0a172d",
-                              boxShadow: "0 2px 4px rgba(0,0,0,0.4)",
-                              letterSpacing: "0.1em",
-                            }}
-                          >
-                            #001/030
-                          </div>
-
-                          {/* 漫畫風超級英雄頭銜（姓名上方）*/}
-                          <div className="absolute top-[6%] left-0 right-0 flex justify-center">
+                          {/* 姓名區（頂部 6%~22%）— 金框包覆的華麗版 */}
+                          <div className="absolute top-[6%] left-[12%] right-[12%]">
                             <div
-                              className="relative inline-block px-[4.5%] py-[1%] text-[2.8vw] sm:text-[14px] font-black whitespace-nowrap"
+                              className="relative px-[6%] py-[3%] text-center"
                               style={{
-                                background: "linear-gradient(180deg, #FFE600 0%, #FF8800 50%, #E60000 100%)",
-                                color: "#1a0500",
-                                transform: "rotate(-3deg)",
-                                clipPath: "polygon(8% 0, 100% 0, 92% 100%, 0% 100%)",
-                                boxShadow: "0 3px 0 #5c1500, 0 5px 8px rgba(0,0,0,0.5)",
-                                textShadow: "0 1px 0 rgba(255,255,255,0.4)",
-                                fontFamily: "'Noto Sans TC',sans-serif",
-                                letterSpacing: "0.08em",
-                                WebkitTextStroke: "0.5px #5c1500",
+                                background: "linear-gradient(180deg, rgba(230,197,106,0.15) 0%, rgba(184,134,11,0.08) 100%)",
+                                border: "2px solid #E6C56A",
+                                borderRadius: "6px",
+                                boxShadow: "0 0 12px rgba(230,197,106,0.35), inset 0 0 8px rgba(230,197,106,0.15)",
                               }}
                             >
-                              💪 鋼鐵金剛
-                            </div>
-                          </div>
+                              {/* 內框（雙線金邊） */}
+                              <div
+                                className="absolute inset-[3px] rounded-sm pointer-events-none"
+                                style={{ border: "1px solid rgba(230,197,106,0.5)" }}
+                              />
+                              {/* 四角星裝飾 */}
+                              <span className="absolute -top-[6px] -left-[6px] text-[#FCEE21] text-[10px]">✦</span>
+                              <span className="absolute -top-[6px] -right-[6px] text-[#FCEE21] text-[10px]">✦</span>
+                              <span className="absolute -bottom-[6px] -left-[6px] text-[#FCEE21] text-[10px]">✦</span>
+                              <span className="absolute -bottom-[6px] -right-[6px] text-[#FCEE21] text-[10px]">✦</span>
 
-                          {/* 姓名區（頂部 15%~26%）*/}
-                          <div className="absolute top-[13.5%] left-0 right-0 text-center">
-                            <svg viewBox="0 0 200 56" className="w-[58%] mx-auto block">
-                              <text x="100" y="42" textAnchor="middle"
-                                fontSize="40" fontWeight="900"
-                                fontFamily="'Noto Sans TC',sans-serif"
-                                fill="url(#goldName)"
-                                stroke="#5c3d00" strokeWidth="1"
-                                style={{ paintOrder: "stroke", letterSpacing: "0.08em" }}>
-                                小翔平
-                              </text>
-                            </svg>
-                            {/* 分隔線 */}
-                            <div className="mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E6C56A]/70 to-transparent my-[0.5%]" />
-                            <div className="text-white/90 font-semibold text-[2.4vw] sm:text-[12px] tracking-[0.4em]">右打 / 右投</div>
+                              <svg viewBox="0 0 200 56" className="w-full block">
+                                <text x="100" y="44" textAnchor="middle"
+                                  fontSize="44" fontWeight="900"
+                                  fontFamily="'Noto Sans TC',sans-serif"
+                                  fill="url(#goldName)"
+                                  stroke="#5c3d00" strokeWidth="1"
+                                  style={{ paintOrder: "stroke", letterSpacing: "0.1em" }}>
+                                  小翔平
+                                </text>
+                              </svg>
+                              <div className="text-[#FCEE21]/90 font-semibold text-[2.4vw] sm:text-[12px] tracking-[0.4em] mt-[1%]">
+                                右打 ・ 右投
+                              </div>
+                            </div>
                           </div>
 
                           {/* 雷達圖（遊戲卡風格，標籤在上、數字在下堆疊）*/}
                           <svg
                             viewBox="-170 -160 340 320"
                             className="absolute left-[50%] -translate-x-1/2"
-                            style={{ top: "28%", width: "90%", height: "38%" }}
+                            style={{ top: "26%", width: "92%", height: "40%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
                             <defs>
