@@ -475,7 +475,7 @@ export default function Home() {
                           style={{
                             background: "radial-gradient(ellipse 90% 70% at 50% 30%, #2a4876 0%, #0a172d 70%)",
                           }}>
-                          {/* SVG 漸層定義 */}
+                          {/* SVG 漸層 + filter 定義 */}
                           <svg width="0" height="0" className="absolute">
                             <defs>
                               <linearGradient id="goldName" x1="0" y1="0" x2="0" y2="1">
@@ -487,6 +487,14 @@ export default function Home() {
                                 <stop offset="0%" stopColor="#FFF8C4" />
                                 <stop offset="100%" stopColor="#E6C56A" />
                               </linearGradient>
+                              {/* 把白色背景變透明，保留 logo 原有的黃褐色 + 黑色 */}
+                              <filter id="removeWhite" colorInterpolationFilters="sRGB">
+                                <feColorMatrix type="matrix" values="
+                                  1 0 0 0 0
+                                  0 1 0 0 0
+                                  0 0 1 0 0
+                                  -1.5 -1.5 -1.5 0 3" />
+                              </filter>
                             </defs>
                           </svg>
 
@@ -505,36 +513,32 @@ export default function Home() {
                           <div className="absolute bottom-[2.5%] left-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
                           <div className="absolute bottom-[2.5%] right-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
 
-                          {/* 姓名區（頂部 7%~22%）— 純文字、無框 */}
-                          <div className="absolute top-[7%] left-[10%] right-[10%] text-center">
-                            <svg viewBox="0 0 200 60" className="w-full block">
-                              <text x="100" y="46" textAnchor="middle"
-                                fontSize="46" fontWeight="900"
+                          {/* 姓名區（頂部 4%~17%）— 緊湊一組 */}
+                          <div className="absolute top-[4%] left-[15%] right-[15%] text-center">
+                            <svg viewBox="0 0 200 56" className="w-full block">
+                              <text x="100" y="40" textAnchor="middle"
+                                fontSize="34" fontWeight="900"
                                 fontFamily="'Noto Sans TC',sans-serif"
                                 fill="url(#goldName)"
-                                stroke="#5c3d00" strokeWidth="1"
+                                stroke="#5c3d00" strokeWidth="0.8"
                                 style={{ paintOrder: "stroke", letterSpacing: "0.06em" }}>
                                 小翔平
                               </text>
-                            </svg>
-                            {/* 細金線分隔 */}
-                            <div className="mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E6C56A]/70 to-transparent my-[1%]" />
-                            <svg viewBox="0 0 200 22" className="w-full block">
-                              <text x="100" y="16" textAnchor="middle"
-                                fontSize="14" fontWeight="600"
+                              <text x="100" y="54" textAnchor="middle"
+                                fontSize="11" fontWeight="600"
                                 fontFamily="'Noto Sans TC',sans-serif"
                                 fill="#FCEE21"
-                                style={{ letterSpacing: "0.3em" }}>
+                                style={{ letterSpacing: "0.32em" }}>
                                 右打 ・ 右投
                               </text>
                             </svg>
                           </div>
 
-                          {/* 雷達圖（卡片背面視覺重點）— viewBox 上下加足空間，避免 投球速度/跑壘速度 被切 */}
+                          {/* 雷達圖（卡片背面視覺重點）*/}
                           <svg
                             viewBox="-130 -150 260 300"
                             className="absolute left-[50%] -translate-x-1/2"
-                            style={{ top: "24%", width: "100%", height: "52%" }}
+                            style={{ top: "20%", width: "100%", height: "55%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
                             <defs>
@@ -628,19 +632,18 @@ export default function Home() {
                             })}
                           </svg>
 
-                          {/* FANG logo + 方昶詠簽名（縮小避免擠到 banner）*/}
-                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[4%]" style={{ top: "79%" }}>
+                          {/* FANG logo + 方昶詠簽名（放大）*/}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "78%" }}>
                             <img
                               src={IMAGES.logo}
                               alt="FANG"
-                              className="w-[15%] h-auto object-contain"
+                              className="w-[26%] h-auto object-contain"
                               style={{
-                                filter: "invert(1) brightness(1.15) drop-shadow(0 2px 6px rgba(230,197,106,0.4))",
-                                mixBlendMode: "lighten",
+                                filter: "url(#removeWhite) drop-shadow(0 2px 6px rgba(230,197,106,0.35))",
                               }}
                             />
                             <span
-                              className="font-bold italic text-[3.6vw] sm:text-base"
+                              className="font-bold italic text-[5vw] sm:text-2xl"
                               style={{
                                 transform: "rotate(-6deg)",
                                 fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
