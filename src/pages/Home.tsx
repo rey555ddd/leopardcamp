@@ -543,11 +543,11 @@ export default function Home() {
                             </div>
                           </div>
 
-                          {/* 雷達圖（遊戲卡風格，標籤在上、數字在下堆疊）*/}
+                          {/* 雷達圖（卡片背面視覺重點，放大）*/}
                           <svg
-                            viewBox="-150 -140 300 280"
+                            viewBox="-135 -125 270 250"
                             className="absolute left-[50%] -translate-x-1/2"
-                            style={{ top: "30%", width: "94%", height: "42%" }}
+                            style={{ top: "24%", width: "100%", height: "52%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
                             <defs>
@@ -635,8 +635,8 @@ export default function Home() {
                             })}
                           </svg>
 
-                          {/* FANG logo + 方昶詠簽名（教練留言移除後上移）*/}
-                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "75%" }}>
+                          {/* FANG logo + 方昶詠簽名 */}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "80%" }}>
                             <img
                               src={IMAGES.logo}
                               alt="FANG"
