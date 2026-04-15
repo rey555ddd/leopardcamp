@@ -505,49 +505,49 @@ export default function Home() {
                           <div className="absolute bottom-[2.5%] left-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
                           <div className="absolute bottom-[2.5%] right-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
 
-                          {/* 姓名區（頂部 6%~22%）— 金框包覆的華麗版 */}
-                          <div className="absolute top-[6%] left-[12%] right-[12%]">
+                          {/* 姓名區（頂部 7%~22%）— 金框包覆 */}
+                          <div className="absolute top-[7%] left-[15%] right-[15%]">
                             <div
-                              className="relative px-[6%] py-[3%] text-center"
+                              className="relative px-[5%] py-[5%] text-center"
                               style={{
                                 background: "linear-gradient(180deg, rgba(230,197,106,0.15) 0%, rgba(184,134,11,0.08) 100%)",
-                                border: "2px solid #E6C56A",
-                                borderRadius: "6px",
-                                boxShadow: "0 0 12px rgba(230,197,106,0.35), inset 0 0 8px rgba(230,197,106,0.15)",
+                                border: "1.5px solid #E6C56A",
+                                borderRadius: "5px",
+                                boxShadow: "0 0 10px rgba(230,197,106,0.3), inset 0 0 6px rgba(230,197,106,0.12)",
                               }}
                             >
-                              {/* 內框（雙線金邊） */}
-                              <div
-                                className="absolute inset-[3px] rounded-sm pointer-events-none"
-                                style={{ border: "1px solid rgba(230,197,106,0.5)" }}
-                              />
-                              {/* 四角星裝飾 */}
-                              <span className="absolute -top-[6px] -left-[6px] text-[#FCEE21] text-[10px]">✦</span>
-                              <span className="absolute -top-[6px] -right-[6px] text-[#FCEE21] text-[10px]">✦</span>
-                              <span className="absolute -bottom-[6px] -left-[6px] text-[#FCEE21] text-[10px]">✦</span>
-                              <span className="absolute -bottom-[6px] -right-[6px] text-[#FCEE21] text-[10px]">✦</span>
+                              <span className="absolute -top-[5px] -left-[5px] text-[#FCEE21] text-[8px]">✦</span>
+                              <span className="absolute -top-[5px] -right-[5px] text-[#FCEE21] text-[8px]">✦</span>
+                              <span className="absolute -bottom-[5px] -left-[5px] text-[#FCEE21] text-[8px]">✦</span>
+                              <span className="absolute -bottom-[5px] -right-[5px] text-[#FCEE21] text-[8px]">✦</span>
 
-                              <svg viewBox="0 0 200 56" className="w-full block">
-                                <text x="100" y="44" textAnchor="middle"
-                                  fontSize="44" fontWeight="900"
+                              <svg viewBox="0 0 200 60" className="w-full block">
+                                <text x="100" y="46" textAnchor="middle"
+                                  fontSize="46" fontWeight="900"
                                   fontFamily="'Noto Sans TC',sans-serif"
                                   fill="url(#goldName)"
                                   stroke="#5c3d00" strokeWidth="1"
-                                  style={{ paintOrder: "stroke", letterSpacing: "0.1em" }}>
+                                  style={{ paintOrder: "stroke", letterSpacing: "0.06em" }}>
                                   小翔平
                                 </text>
                               </svg>
-                              <div className="text-[#FCEE21]/90 font-semibold text-[2.4vw] sm:text-[12px] tracking-[0.4em] mt-[1%]">
-                                右打 ・ 右投
-                              </div>
+                              <svg viewBox="0 0 200 22" className="w-full block mt-[2%]">
+                                <text x="100" y="16" textAnchor="middle"
+                                  fontSize="14" fontWeight="600"
+                                  fontFamily="'Noto Sans TC',sans-serif"
+                                  fill="#FCEE21"
+                                  style={{ letterSpacing: "0.3em" }}>
+                                  右打 ・ 右投
+                                </text>
+                              </svg>
                             </div>
                           </div>
 
                           {/* 雷達圖（遊戲卡風格，標籤在上、數字在下堆疊）*/}
                           <svg
-                            viewBox="-170 -160 340 320"
+                            viewBox="-150 -140 300 280"
                             className="absolute left-[50%] -translate-x-1/2"
-                            style={{ top: "26%", width: "92%", height: "40%" }}
+                            style={{ top: "30%", width: "94%", height: "42%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
                             <defs>
@@ -616,18 +616,17 @@ export default function Home() {
                               return (
                                 <g key={i}>
                                   {/* 標籤在上 */}
-                                  <text x={cx} y={cy - 5} textAnchor="middle" dominantBaseline="middle"
-                                    fill="#E6C56A" fontSize="12" fontWeight="600"
-                                    fontFamily="'Noto Sans TC',sans-serif"
-                                    style={{ letterSpacing: "0.05em" }}>
+                                  <text x={cx} y={cy - 7} textAnchor="middle" dominantBaseline="middle"
+                                    fill="#E6C56A" fontSize="16" fontWeight="700"
+                                    fontFamily="'Noto Sans TC',sans-serif">
                                     {s.label}
                                   </text>
                                   {/* 數字在標籤正下方 */}
-                                  <text x={cx} y={cy + 14} textAnchor="middle" dominantBaseline="middle"
+                                  <text x={cx} y={cy + 16} textAnchor="middle" dominantBaseline="middle"
                                     fill="url(#goldNum)"
-                                    fontSize="20" fontWeight="900"
+                                    fontSize="26" fontWeight="900"
                                     fontFamily="'Inter',sans-serif"
-                                    stroke="#0a172d" strokeWidth="2.5"
+                                    stroke="#0a172d" strokeWidth="3"
                                     style={{ paintOrder: "stroke" }}>
                                     {s.v}
                                   </text>
@@ -661,19 +660,25 @@ export default function Home() {
                             </span>
                           </div>
 
-                          {/* 金色彩帶 — 夏令營名 (底部 bottom 3%)*/}
+                          {/* 金色彩帶 — 夏令營名 (底部 bottom 4%) — SVG 確保不換行 */}
                           <div
-                            className="absolute inset-x-[10%] text-center py-[1%] rounded-sm"
+                            className="absolute inset-x-[8%] text-center py-[1%] rounded-sm"
                             style={{
-                              bottom: "3%",
-                              background: "linear-gradient(90deg, transparent 0%, rgba(230,197,106,0.2) 20%, rgba(230,197,106,0.35) 50%, rgba(230,197,106,0.2) 80%, transparent 100%)",
+                              bottom: "4%",
+                              background: "linear-gradient(90deg, transparent 0%, rgba(230,197,106,0.18) 20%, rgba(230,197,106,0.32) 50%, rgba(230,197,106,0.18) 80%, transparent 100%)",
                               borderTop: "1px solid rgba(230,197,106,0.4)",
                               borderBottom: "1px solid rgba(230,197,106,0.4)",
                             }}
                           >
-                            <span className="text-[#E6C56A] font-bold text-[2.5vw] sm:text-[12px] tracking-[0.35em]">
-                              2026 豹子腿棒球夏令營
-                            </span>
+                            <svg viewBox="0 0 240 18" className="w-full block">
+                              <text x="120" y="14" textAnchor="middle"
+                                fontSize="13" fontWeight="700"
+                                fontFamily="'Noto Sans TC',sans-serif"
+                                fill="#E6C56A"
+                                style={{ letterSpacing: "0.15em" }}>
+                                2026  豹子腿棒球夏令營
+                              </text>
+                            </svg>
                           </div>
                         </div>
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡背面</p>
