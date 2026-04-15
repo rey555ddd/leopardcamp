@@ -505,42 +505,29 @@ export default function Home() {
                           <div className="absolute bottom-[2.5%] left-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-l-[2.5px] border-[#E6C56A]" />
                           <div className="absolute bottom-[2.5%] right-[2.5%] w-[10%] h-[7%] border-b-[2.5px] border-r-[2.5px] border-[#E6C56A]" />
 
-                          {/* 姓名區（頂部 7%~22%）— 金框包覆 */}
-                          <div className="absolute top-[7%] left-[15%] right-[15%]">
-                            <div
-                              className="relative px-[5%] py-[5%] text-center"
-                              style={{
-                                background: "linear-gradient(180deg, rgba(230,197,106,0.15) 0%, rgba(184,134,11,0.08) 100%)",
-                                border: "1.5px solid #E6C56A",
-                                borderRadius: "5px",
-                                boxShadow: "0 0 10px rgba(230,197,106,0.3), inset 0 0 6px rgba(230,197,106,0.12)",
-                              }}
-                            >
-                              <span className="absolute -top-[5px] -left-[5px] text-[#FCEE21] text-[8px]">✦</span>
-                              <span className="absolute -top-[5px] -right-[5px] text-[#FCEE21] text-[8px]">✦</span>
-                              <span className="absolute -bottom-[5px] -left-[5px] text-[#FCEE21] text-[8px]">✦</span>
-                              <span className="absolute -bottom-[5px] -right-[5px] text-[#FCEE21] text-[8px]">✦</span>
-
-                              <svg viewBox="0 0 200 60" className="w-full block">
-                                <text x="100" y="46" textAnchor="middle"
-                                  fontSize="46" fontWeight="900"
-                                  fontFamily="'Noto Sans TC',sans-serif"
-                                  fill="url(#goldName)"
-                                  stroke="#5c3d00" strokeWidth="1"
-                                  style={{ paintOrder: "stroke", letterSpacing: "0.06em" }}>
-                                  小翔平
-                                </text>
-                              </svg>
-                              <svg viewBox="0 0 200 22" className="w-full block mt-[2%]">
-                                <text x="100" y="16" textAnchor="middle"
-                                  fontSize="14" fontWeight="600"
-                                  fontFamily="'Noto Sans TC',sans-serif"
-                                  fill="#FCEE21"
-                                  style={{ letterSpacing: "0.3em" }}>
-                                  右打 ・ 右投
-                                </text>
-                              </svg>
-                            </div>
+                          {/* 姓名區（頂部 7%~22%）— 純文字、無框 */}
+                          <div className="absolute top-[7%] left-[10%] right-[10%] text-center">
+                            <svg viewBox="0 0 200 60" className="w-full block">
+                              <text x="100" y="46" textAnchor="middle"
+                                fontSize="46" fontWeight="900"
+                                fontFamily="'Noto Sans TC',sans-serif"
+                                fill="url(#goldName)"
+                                stroke="#5c3d00" strokeWidth="1"
+                                style={{ paintOrder: "stroke", letterSpacing: "0.06em" }}>
+                                小翔平
+                              </text>
+                            </svg>
+                            {/* 細金線分隔 */}
+                            <div className="mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-[#E6C56A]/70 to-transparent my-[1%]" />
+                            <svg viewBox="0 0 200 22" className="w-full block">
+                              <text x="100" y="16" textAnchor="middle"
+                                fontSize="14" fontWeight="600"
+                                fontFamily="'Noto Sans TC',sans-serif"
+                                fill="#FCEE21"
+                                style={{ letterSpacing: "0.3em" }}>
+                                右打 ・ 右投
+                              </text>
+                            </svg>
                           </div>
 
                           {/* 雷達圖（卡片背面視覺重點，放大）*/}
