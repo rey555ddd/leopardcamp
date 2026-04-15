@@ -456,14 +456,14 @@ export default function Home() {
                       <span className="text-sm sm:text-base font-medium text-gray-500">（紀錄成長軌跡）</span>
                     </h4>
                     <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-8 items-start">
-                      {/* ===== 正面 — 用 background-size 放大 120% 切掉四邊模糊 bleed ===== */}
+                      {/* ===== 正面 — 四邊 bleed 更徹底切掉 ===== */}
                       <div>
                         <div
                           className="aspect-[5/7] rounded-xl shadow-lg bg-no-repeat"
                           style={{
                             backgroundImage: `url(${IMAGES.cardFront})`,
-                            backgroundSize: "130% auto",
-                            backgroundPosition: "center 45%",
+                            backgroundSize: "148% auto",
+                            backgroundPosition: "center 52%",
                           }}
                         />
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡正面</p>
@@ -510,10 +510,11 @@ export default function Home() {
                             <div className="text-white/95 font-semibold text-[2.6vw] sm:text-sm mt-[2%] tracking-[0.3em]">右打 / 右投</div>
                           </div>
 
-                          {/* SVG 雷達圖 + 6 項數據 */}
+                          {/* SVG 雷達圖 + 6 項數據（固定置中於 23%~63%）*/}
                           <svg
                             viewBox="-150 -170 300 340"
-                            className="absolute top-[28%] left-[50%] -translate-x-1/2 w-[88%]"
+                            className="absolute left-[50%] -translate-x-1/2 w-[85%]"
+                            style={{ top: "23%", height: "43%" }}
                             preserveAspectRatio="xMidYMid meet"
                           >
                             {[100, 67, 33].map((r, i) => {
@@ -571,16 +572,17 @@ export default function Home() {
                             })}
                           </svg>
 
-                          {/* 底部：FANG logo + 方昶詠簽名（並排）*/}
-                          <div className="absolute bottom-[11%] left-0 right-0 flex items-center justify-center gap-[4%]">
-                            <img src={IMAGES.logo} alt="FANG" className="w-[24%] h-auto object-contain drop-shadow-[0_2px_4px_rgba(230,197,106,0.5)]" />
+                          {/* 底部：FANG logo + 方昶詠簽名（獨立於雷達圖下方，不重疊）*/}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[6%]" style={{ top: "73%" }}>
+                            <img src={IMAGES.logo} alt="FANG" className="w-[22%] h-auto object-contain drop-shadow-[0_2px_4px_rgba(230,197,106,0.5)]" />
                             <span
-                              className="text-white font-bold italic text-[3.4vw] sm:text-lg"
+                              className="text-white font-bold italic text-[4.2vw] sm:text-xl"
                               style={{
-                                transform: "rotate(-5deg)",
+                                transform: "rotate(-6deg)",
                                 fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
-                                textShadow: "0 1px 3px rgba(0,0,0,0.7), 0 0 6px rgba(255,255,255,0.3)",
-                                letterSpacing: "0.04em",
+                                textShadow: "0 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(255,255,255,0.4)",
+                                letterSpacing: "0.05em",
+                                color: "#FFF8D0",
                               }}
                             >
                               方昶詠
@@ -588,7 +590,7 @@ export default function Home() {
                           </div>
 
                           {/* 最底部：夏令營名 */}
-                          <div className="absolute bottom-[4.5%] left-0 right-0 text-center text-[#E6C56A] font-semibold text-[2.4vw] sm:text-xs tracking-[0.35em]">
+                          <div className="absolute left-0 right-0 text-center text-[#E6C56A] font-semibold text-[2.6vw] sm:text-xs tracking-[0.3em]" style={{ bottom: "5.5%" }}>
                             2026 豹子腿棒球夏令營
                           </div>
                         </div>
