@@ -636,41 +636,19 @@ export default function Home() {
                             })}
                           </svg>
 
-                          {/* 教練留言卡（客製化、手寫感）*/}
-                          <div
-                            className="absolute left-[8%] right-[8%] p-[2.5%] rounded-md"
-                            style={{
-                              top: "66%",
-                              background: "linear-gradient(135deg, rgba(255,248,200,0.12) 0%, rgba(230,197,106,0.08) 100%)",
-                              border: "1px dashed rgba(230,197,106,0.5)",
-                              backdropFilter: "blur(2px)",
-                            }}
-                          >
-                            <div className="text-[#FCEE21] font-bold text-[1.8vw] sm:text-[10px] tracking-widest mb-[1%]">💬 COACH'S NOTE</div>
-                            <p
-                              className="text-white/95 leading-[1.55] text-[2.2vw] sm:text-[11px]"
-                              style={{
-                                fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng','Noto Sans TC',serif",
-                                letterSpacing: "0.04em",
-                              }}
-                            >
-                              小翔平：四天裡你從不敢揮棒，到主動站上打擊區，進步超大！繼續加油，未來你一定會是豹子腿最耀眼的那顆星 ⭐
-                            </p>
-                          </div>
-
-                          {/* FANG logo + 方昶詠簽名 */}
-                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "84%" }}>
+                          {/* FANG logo + 方昶詠簽名（教練留言移除後上移）*/}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "75%" }}>
                             <img
                               src={IMAGES.logo}
                               alt="FANG"
-                              className="w-[16%] h-auto object-contain"
+                              className="w-[20%] h-auto object-contain"
                               style={{
                                 filter: "invert(1) brightness(1.15) drop-shadow(0 2px 6px rgba(230,197,106,0.4))",
                                 mixBlendMode: "lighten",
                               }}
                             />
                             <span
-                              className="font-bold italic text-[3.8vw] sm:text-lg"
+                              className="font-bold italic text-[4.5vw] sm:text-xl"
                               style={{
                                 transform: "rotate(-6deg)",
                                 fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
