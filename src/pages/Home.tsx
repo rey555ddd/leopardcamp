@@ -530,9 +530,9 @@ export default function Home() {
                             </svg>
                           </div>
 
-                          {/* 雷達圖（卡片背面視覺重點，放大）*/}
+                          {/* 雷達圖（卡片背面視覺重點）— viewBox 上下加足空間，避免 投球速度/跑壘速度 被切 */}
                           <svg
-                            viewBox="-135 -125 270 250"
+                            viewBox="-130 -150 260 300"
                             className="absolute left-[50%] -translate-x-1/2"
                             style={{ top: "24%", width: "100%", height: "52%" }}
                             preserveAspectRatio="xMidYMid meet"
@@ -545,6 +545,10 @@ export default function Home() {
                               <filter id="dataGlow">
                                 <feGaussianBlur stdDeviation="2" result="b" />
                                 <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                              </filter>
+                              <filter id="numShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" floodColor="#000" floodOpacity="0.6" />
+                                <feDropShadow dx="0" dy="0" stdDeviation="2" floodColor="#FCEE21" floodOpacity="0.4" />
                               </filter>
                             </defs>
 
@@ -604,16 +608,18 @@ export default function Home() {
                                 <g key={i}>
                                   {/* 標籤在上 */}
                                   <text x={cx} y={cy - 7} textAnchor="middle" dominantBaseline="middle"
-                                    fill="#E6C56A" fontSize="16" fontWeight="700"
-                                    fontFamily="'Noto Sans TC',sans-serif">
+                                    fill="#E6C56A" fontSize="13" fontWeight="700"
+                                    fontFamily="'Noto Sans TC',sans-serif"
+                                    style={{ letterSpacing: "0.04em" }}>
                                     {s.label}
                                   </text>
-                                  {/* 數字在標籤正下方 */}
-                                  <text x={cx} y={cy + 16} textAnchor="middle" dominantBaseline="middle"
+                                  {/* 數字在標籤正下方（金漸層 + 描邊 + 雙層陰影）*/}
+                                  <text x={cx} y={cy + 13} textAnchor="middle" dominantBaseline="middle"
                                     fill="url(#goldNum)"
-                                    fontSize="26" fontWeight="900"
+                                    fontSize="22" fontWeight="900"
                                     fontFamily="'Inter',sans-serif"
-                                    stroke="#0a172d" strokeWidth="3"
+                                    stroke="#3d2800" strokeWidth="2.5"
+                                    filter="url(#numShadow)"
                                     style={{ paintOrder: "stroke" }}>
                                     {s.v}
                                   </text>
@@ -622,19 +628,19 @@ export default function Home() {
                             })}
                           </svg>
 
-                          {/* FANG logo + 方昶詠簽名 */}
-                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[5%]" style={{ top: "80%" }}>
+                          {/* FANG logo + 方昶詠簽名（縮小避免擠到 banner）*/}
+                          <div className="absolute left-0 right-0 flex items-center justify-center gap-[4%]" style={{ top: "79%" }}>
                             <img
                               src={IMAGES.logo}
                               alt="FANG"
-                              className="w-[20%] h-auto object-contain"
+                              className="w-[15%] h-auto object-contain"
                               style={{
                                 filter: "invert(1) brightness(1.15) drop-shadow(0 2px 6px rgba(230,197,106,0.4))",
                                 mixBlendMode: "lighten",
                               }}
                             />
                             <span
-                              className="font-bold italic text-[4.5vw] sm:text-xl"
+                              className="font-bold italic text-[3.6vw] sm:text-base"
                               style={{
                                 transform: "rotate(-6deg)",
                                 fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
