@@ -453,16 +453,52 @@ export default function Home() {
                     <h4 className="text-xl sm:text-3xl font-black text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
                       <span className="text-2xl sm:text-4xl">🏆</span> 限量球員卡 & 專屬定製球員卡
                     </h4>
-                    <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-8">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-8 items-start">
+                      {/* 正面 — 去除包裝背景，圖片直出，與背面同寬 */}
                       <div>
-                        <div className="aspect-[1.586/1] rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
-                          <img src={IMAGES.cardFront} alt="球員卡正面" className="w-full h-full object-contain" />
-                        </div>
+                        <img src={IMAGES.cardFront} alt="球員卡正面" className="w-full h-auto block rounded-lg shadow-lg" />
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡正面</p>
                       </div>
+
+                      {/* 背面 — 疊加 6 項模擬數據 + 方昶詠簽名 */}
                       <div>
-                        <div className="aspect-[1.586/1] bg-white rounded-lg shadow-lg border-2 border-[#3FA9F5]/20 p-2 sm:p-3 flex items-center justify-center">
-                          <img src={IMAGES.cardBack} alt="球員卡背面" className="max-w-full max-h-full object-contain" />
+                        <div className="relative w-full">
+                          <img src={IMAGES.cardBack} alt="球員卡背面" className="w-full h-auto block rounded-lg shadow-lg" />
+                          {/* 6 項模擬數值（國小生合理水平）*/}
+                          {[
+                            { v: 62, top: "35%", left: "50%" }, /* 投球速度 */
+                            { v: 71, top: "40%", left: "68%" }, /* 打擊速度 */
+                            { v: 76, top: "52%", left: "68%" }, /* 反應速度 */
+                            { v: 80, top: "58%", left: "50%" }, /* 跑壘速度 */
+                            { v: 68, top: "52%", left: "32%" }, /* 防守能力 */
+                            { v: 85, top: "40%", left: "32%" }, /* 體能 */
+                          ].map((s, i) => (
+                            <span
+                              key={i}
+                              className="absolute -translate-x-1/2 -translate-y-1/2 font-black text-[#FCEE21] text-[3.2vw] sm:text-xl leading-none pointer-events-none"
+                              style={{
+                                top: s.top,
+                                left: s.left,
+                                textShadow: "0 0 4px rgba(0,0,0,0.75), 0 1px 0 #000",
+                              }}
+                            >
+                              {s.v}
+                            </span>
+                          ))}
+                          {/* 方昶詠簽名 */}
+                          <span
+                            className="absolute text-white/95 font-bold italic text-[2.6vw] sm:text-base pointer-events-none"
+                            style={{
+                              bottom: "5%",
+                              right: "7%",
+                              transform: "rotate(-8deg)",
+                              fontFamily: "'Liu Jian Mao Cao','Ma Shan Zheng',cursive,serif",
+                              textShadow: "0 1px 3px rgba(0,0,0,0.6)",
+                              letterSpacing: "0.06em",
+                            }}
+                          >
+                            方昶詠
+                          </span>
                         </div>
                         <p className="text-xs sm:text-sm font-bold text-gray-900 text-center mt-2 sm:mt-3">球員卡背面</p>
                       </div>
