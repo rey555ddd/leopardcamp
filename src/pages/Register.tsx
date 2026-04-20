@@ -96,21 +96,80 @@ export default function Register() {
   };
 
   if (submitted) {
+    const ACCOUNT = "440540628159";
+    const copyAccount = async () => {
+      try {
+        await navigator.clipboard.writeText(ACCOUNT);
+        toast.success("帳號已複製");
+      } catch {
+        toast.error("複製失敗，請手動複製");
+      }
+    };
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12 max-w-lg w-full text-center">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">
+        <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12 max-w-lg w-full">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 className="text-3xl font-black text-gray-900 mb-4">報名成功！</h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              感謝您報名 2026 豹子腿棒球夏令營！<br />
+              請依下方資訊完成匯款，我們會透過 Line 聯繫確認。
+            </p>
           </div>
-          <h2 className="text-3xl font-black text-gray-900 mb-4">報名成功！</h2>
-          <p className="text-gray-600 mb-8 leading-relaxed">
-            感謝您報名 2026 豹子腿棒球夏令營！我們會盡快透過 Line 與您聯繫確認報名資訊。
-          </p>
-          <Link to="/" className="inline-flex items-center justify-center bg-[#3FA9F5] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#2a8fd4] transition-colors">
-            返回首頁
-          </Link>
+
+          {/* 匯款資訊 */}
+          <div className="bg-gradient-to-br from-[#3FA9F5]/10 to-[#FCEE21]/10 border-2 border-[#3FA9F5]/20 rounded-xl p-5 sm:p-6 mb-6">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">💰</span>
+              <h3 className="text-lg font-black text-gray-900">匯款資訊</h3>
+            </div>
+
+            <div className="bg-white rounded-lg p-4 mb-4 text-center">
+              <p className="text-xs text-gray-500 mb-1">活動費用</p>
+              <p className="text-3xl font-black text-[#3FA9F5]">NT$ 10,800</p>
+              <p className="text-xs text-gray-500 mt-1">2026 / 7 / 23 – 7 / 26　四日營</p>
+            </div>
+
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between items-start gap-3">
+                <span className="text-gray-500 shrink-0">銀行</span>
+                <span className="font-bold text-gray-900 text-right">（822）中國信託　中華分行</span>
+              </div>
+              <div className="flex justify-between items-start gap-3">
+                <span className="text-gray-500 shrink-0">戶名</span>
+                <span className="font-bold text-gray-900 text-right">豹子腿工作室</span>
+              </div>
+              <div className="flex justify-between items-center gap-3">
+                <span className="text-gray-500 shrink-0">帳號</span>
+                <button
+                  type="button"
+                  onClick={copyAccount}
+                  className="font-mono font-bold text-gray-900 bg-yellow-50 hover:bg-yellow-100 border border-yellow-300 px-3 py-1 rounded flex items-center gap-2 transition-colors"
+                  title="點擊複製帳號"
+                >
+                  <span className="tracking-wider">4405-4062-8159</span>
+                  <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-4 pt-4 border-t border-[#3FA9F5]/20 text-xs text-gray-600 leading-relaxed space-y-1">
+              <p>📌 <strong>匯款備註</strong>請填小朋友姓名，方便對帳</p>
+              <p>✉️ 聯絡信箱：fcy0129@yahoo.com</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link to="/" className="inline-flex items-center justify-center bg-[#3FA9F5] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#2a8fd4] transition-colors">
+              返回首頁
+            </Link>
+          </div>
         </div>
       </div>
     );
