@@ -778,8 +778,8 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-4">聯絡方式</h3>
-              <p className="text-gray-400 text-xs sm:text-sm">電話：(02) XXXX-XXXX</p>
-              <p className="text-gray-400 text-xs sm:text-sm">信箱：info@leopardcamp.com</p>
+              <p className="text-gray-400 text-xs sm:text-sm">電話：0929-845-267</p>
+              <p className="text-gray-400 text-xs sm:text-sm">信箱：fcy0129@yahoo.com</p>
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-4">追蹤我們</h3>
