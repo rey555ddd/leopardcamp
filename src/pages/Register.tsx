@@ -205,9 +205,31 @@ export default function Register() {
 
       <div className="container py-8 sm:py-12">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8">
             <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">2026 豹子腿棒球夏令營報名表</h1>
             <p className="text-gray-600">請填寫以下資料完成報名，所有欄位皆為必填</p>
+          </div>
+
+          {/* 費用資訊（填表前先看到） */}
+          <div className="bg-gradient-to-br from-[#3FA9F5]/10 to-[#FCEE21]/10 border-2 border-[#3FA9F5]/30 rounded-2xl p-5 sm:p-6 mb-8 shadow-md">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">💰</span>
+              <h3 className="text-base sm:text-lg font-black text-gray-900">活動費用（每位學員）</h3>
+              <span className="ml-auto text-xs text-gray-500">2026 / 7 / 23–7 / 26 四日營</span>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-white border-2 border-[#FCEE21] rounded-lg p-3 text-center relative">
+                <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#FCEE21] text-gray-900 text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">早鳥優惠</span>
+                <p className="text-2xl sm:text-3xl font-black text-gray-900 mt-1">NT$ 11,500</p>
+                <p className="text-[11px] sm:text-xs text-gray-600 mt-1">5 / 20 前完成匯款</p>
+              </div>
+              <div className="bg-white border-2 border-gray-200 rounded-lg p-3 text-center">
+                <p className="text-[10px] text-gray-500 font-bold mb-1">原價</p>
+                <p className="text-2xl sm:text-3xl font-black text-gray-700 mt-1">NT$ 12,800</p>
+                <p className="text-[11px] sm:text-xs text-gray-600 mt-1">6 / 15 前完成匯款</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-3 text-center">送出報名後會顯示完整匯款帳戶資訊</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
