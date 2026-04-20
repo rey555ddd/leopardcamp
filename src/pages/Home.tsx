@@ -17,7 +17,7 @@ const IMAGES = {
   achievement: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/award_ceremony_14be78cd.png",
   social: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/social_interaction_d66cc9b7.png",
   growth: "/coach/teaching-growth.webp",
-  family: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/family_interaction-A4zWKThLcqnUAxumivhKz5.webp",
+  family: "/coach/family-interaction.webp",
   customJersey: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/custom_jersey_chinese-WWeiVLstTJDBtyWkLDfjg6.webp",
   parentGame: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/parent_game_chinese-AwQKjjcZxk523RAm3otc7X.webp",
   teamBattle: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/team_battle_chinese-EmJg2jmK7uukwdaXaG73gc.webp",
@@ -98,7 +98,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8">
             <a href="#highlights" className="text-gray-700 font-semibold hover:text-[#3FA9F5] transition-colors">營隊亮點</a>
             <a href="#schedule" className="text-gray-700 font-semibold hover:text-[#3FA9F5] transition-colors">課程規劃</a>
-            <a href="#merchandise" className="text-gray-700 font-semibold hover:text-[#3FA9F5] transition-colors">周邊商品</a>
+            <a href="#merchandise" className="text-gray-700 font-semibold hover:text-[#3FA9F5] transition-colors">紀念贈品</a>
             <a href="#faq" className="text-gray-700 font-semibold hover:text-[#3FA9F5] transition-colors">常見問題</a>
             <Link to="/register" className="bg-[#3FA9F5] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#2a8fd4] transition-colors">
               立刻報名
@@ -114,7 +114,7 @@ export default function Home() {
           <div className="md:hidden bg-white border-t border-gray-200 px-4 py-3 space-y-2">
             <a href="#highlights" className="block text-gray-700 font-semibold py-2" onClick={() => setMobileMenuOpen(false)}>營隊亮點</a>
             <a href="#schedule" className="block text-gray-700 font-semibold py-2" onClick={() => setMobileMenuOpen(false)}>課程規劃</a>
-            <a href="#merchandise" className="block text-gray-700 font-semibold py-2" onClick={() => setMobileMenuOpen(false)}>周邊商品</a>
+            <a href="#merchandise" className="block text-gray-700 font-semibold py-2" onClick={() => setMobileMenuOpen(false)}>紀念贈品</a>
             <a href="#faq" className="block text-gray-700 font-semibold py-2" onClick={() => setMobileMenuOpen(false)}>常見問題</a>
             <Link to="/register" className="block w-full text-center bg-[#3FA9F5] text-white px-6 py-3 rounded-lg font-bold mt-2" onClick={() => setMobileMenuOpen(false)}>
               立刻報名
@@ -278,7 +278,7 @@ export default function Home() {
         <section className="py-10 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
           <div className="container">
             <div className="mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black text-gray-900 mb-3 sm:mb-4">家長心得 × 孩子成長</h2>
+              <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black text-gray-900 mb-3 sm:mb-4">每年家長心得 × 孩子成長</h2>
               <div className="w-16 sm:w-24 h-2 sm:h-3 bg-[#FCEE21] rounded-full" />
             </div>
             <div className="flex md:grid md:grid-cols-3 gap-4 sm:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
