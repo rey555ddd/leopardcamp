@@ -146,6 +146,10 @@ export default function Home() {
               </span>
               <span className="text-xs sm:text-sm text-white/90 font-bold bg-[#3FA9F5] px-2 py-0.5 rounded-full">共 4 天</span>
             </div>
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-2 sm:px-5 sm:py-2.5 mb-5 sm:mb-6 w-fit">
+              <span className="text-sm sm:text-base">📍</span>
+              <span className="text-xs sm:text-sm text-white/90 font-semibold">金龍棒球場　臺中市東區德興一街 390-14 號</span>
+            </div>
             <p className="text-base sm:text-xl text-white/90 max-w-xl mb-6 sm:mb-10 leading-relaxed drop-shadow">
               由職棒選手方昶詠教授，集結科學數據、職棒師資、運動精神於一身，四天體驗棒球精神
             </p>

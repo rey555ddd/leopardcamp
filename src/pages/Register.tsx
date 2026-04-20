@@ -176,6 +176,28 @@ export default function Register() {
             </div>
           </div>
 
+          {/* 活動地點 */}
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-5 mb-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-xl">📍</span>
+              <h3 className="text-lg font-black text-gray-900">活動地點</h3>
+            </div>
+            <p className="text-gray-800 font-bold mb-1">金龍棒球場</p>
+            <p className="text-gray-600 text-sm mb-4">401 臺中市東區德興一街 390-14 號</p>
+            <a
+              href="https://maps.google.com/?q=401台灣臺中市東區德興一街390-14號"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#3FA9F5] text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-[#2a8fd4] transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              在 Google 地圖開啟
+            </a>
+          </div>
+
           <div className="text-center">
             <Link to="/" className="inline-flex items-center justify-center bg-[#3FA9F5] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#2a8fd4] transition-colors">
               返回首頁
@@ -229,7 +251,11 @@ export default function Register() {
                 <p className="text-[11px] sm:text-xs text-gray-600 mt-1">6 / 15 前完成匯款</p>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-3 text-center">送出報名後會顯示完整匯款帳戶資訊</p>
+            <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[#3FA9F5]/20">
+              <span className="text-base">📍</span>
+              <p className="text-xs sm:text-sm text-gray-700 font-semibold">金龍棒球場　臺中市東區德興一街 390-14 號</p>
+            </div>
+            <p className="text-xs text-gray-500 mt-2 text-center">送出報名後會顯示完整匯款帳戶資訊</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
