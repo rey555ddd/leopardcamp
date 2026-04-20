@@ -128,10 +128,21 @@ export default function Register() {
               <h3 className="text-lg font-black text-gray-900">匯款資訊</h3>
             </div>
 
-            <div className="bg-white rounded-lg p-4 mb-4 text-center">
-              <p className="text-xs text-gray-500 mb-1">活動費用</p>
-              <p className="text-3xl font-black text-[#3FA9F5]">NT$ 10,800</p>
-              <p className="text-xs text-gray-500 mt-1">2026 / 7 / 23 – 7 / 26　四日營</p>
+            <div className="bg-white rounded-lg p-4 mb-4">
+              <p className="text-xs text-gray-500 text-center mb-3">活動費用（每位學員）</p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-gradient-to-br from-[#FCEE21]/30 to-[#FCEE21]/10 border-2 border-[#FCEE21] rounded-lg p-3 text-center relative">
+                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#FCEE21] text-gray-900 text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">早鳥優惠</span>
+                  <p className="text-2xl font-black text-gray-900 mt-1">NT$ 11,500</p>
+                  <p className="text-[11px] text-gray-600 mt-1">5 / 20 前完成匯款</p>
+                </div>
+                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-3 text-center">
+                  <p className="text-[10px] text-gray-500 font-bold mb-1">原價</p>
+                  <p className="text-2xl font-black text-gray-700 mt-1">NT$ 12,800</p>
+                  <p className="text-[11px] text-gray-600 mt-1">6 / 15 前完成匯款</p>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 mt-3 text-center">2026 / 7 / 23 – 7 / 26　四日營</p>
             </div>
 
             <div className="space-y-3 text-sm">
