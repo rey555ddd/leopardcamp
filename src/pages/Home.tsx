@@ -49,10 +49,10 @@ const values = [
 
 // === 課程規劃簡易大綱 ===
 const scheduleOutline = [
-  { day: "DAY 1", theme: "基礎建立與數據紀錄", highlights: ["報到與暖身", "跑壘練習與規則講解", "傳接球與守備基本訓練", "室內課程：棒球規則與力學", "打擊訓練", "小遊戲與總結"] },
-  { day: "DAY 2", theme: "實戰模擬與熱身賽", highlights: ["傳接球與守備練習", "分組打擊練習", "室內課程與公布分隊", "分組對抗熱身賽", "小遊戲與總結"] },
-  { day: "DAY 3", theme: "榮耀決戰與親子同樂", highlights: ["傳接球與守備練習", "分組打擊練習", "室內課程：進階戰術", "分組對抗積分賽", "小遊戲與總結"] },
-  { day: "DAY 4", theme: "冠軍賽與結業式", highlights: ["傳接球與守備練習", "分組打擊練習", "室內課程：總複習", "冠軍隊伍 vs 家長隊對抗賽", "結業式、頒發證書"] },
+  { day: "DAY 1", date: "7 / 23", weekday: "星期四", theme: "基礎建立與數據紀錄", highlights: ["報到與暖身", "跑壘練習與規則講解", "傳接球與守備基本訓練", "室內課程：棒球規則與力學", "打擊訓練", "小遊戲與總結"] },
+  { day: "DAY 2", date: "7 / 24", weekday: "星期五", theme: "實戰模擬與熱身賽", highlights: ["傳接球與守備練習", "分組打擊練習", "室內課程與公布分隊", "分組對抗熱身賽", "小遊戲與總結"] },
+  { day: "DAY 3", date: "7 / 25", weekday: "星期六", theme: "榮耀決戰與親子同樂", highlights: ["傳接球與守備練習", "分組打擊練習", "室內課程：進階戰術", "分組對抗積分賽", "小遊戲與總結"] },
+  { day: "DAY 4", date: "7 / 26", weekday: "星期日", theme: "冠軍賽與結業式", highlights: ["傳接球與守備練習", "分組打擊練習", "室內課程：總複習", "冠軍隊伍 vs 家長隊對抗賽", "結業式、頒發證書"] },
 ];
 
 // === 營隊亮點 ===
@@ -137,6 +137,15 @@ export default function Home() {
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-4 sm:mb-6 max-w-2xl drop-shadow-lg">
               2026 豹子腿<br />棒球夏令營
             </h1>
+            <div className="inline-flex flex-wrap items-center gap-2 sm:gap-3 bg-white/15 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-2.5 sm:px-5 sm:py-3 mb-5 sm:mb-6 w-fit">
+              <span className="text-xs sm:text-sm text-white/80 font-semibold">營期</span>
+              <span className="text-base sm:text-xl font-black text-[#FCEE21] drop-shadow">
+                2026 / 7 / 23 <span className="text-white/70 mx-1">（四）</span>
+                <span className="text-white/60">—</span>
+                7 / 26 <span className="text-white/70 mx-1">（日）</span>
+              </span>
+              <span className="text-xs sm:text-sm text-white/90 font-bold bg-[#3FA9F5] px-2 py-0.5 rounded-full">共 4 天</span>
+            </div>
             <p className="text-base sm:text-xl text-white/90 max-w-xl mb-6 sm:mb-10 leading-relaxed drop-shadow">
               由職棒選手方昶詠教授，集結科學數據、職棒師資、運動精神於一身，四天體驗棒球精神
             </p>
@@ -384,6 +393,14 @@ export default function Home() {
             <div className="mb-8 sm:mb-16">
               <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black text-gray-900 mb-3 sm:mb-4">黃金四日課程規劃</h2>
               <div className="w-16 sm:w-24 h-2 sm:h-3 bg-[#FCEE21] rounded-full" />
+              <div className="mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
+                <span className="inline-block bg-[#3FA9F5] text-white text-sm sm:text-base font-black px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+                  2026 / 7 / 23（四）— 7 / 26（日）
+                </span>
+                <span className="inline-block bg-[#FCEE21] text-gray-900 text-xs sm:text-sm font-bold px-3 py-1 rounded-full">
+                  共 4 天
+                </span>
+              </div>
               <p className="text-sm sm:text-lg text-gray-600 mt-3 sm:mt-4">
                 採用測速槍、碼表、智慧棒球等專業設備，讓學習更數據化
               </p>
@@ -391,9 +408,11 @@ export default function Home() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
               {scheduleOutline.map((day, i) => (
                 <div key={i} className="bg-gradient-to-br from-white to-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border-2 border-[#3FA9F5]/20 shadow-lg flex flex-col">
-                  <div className="mb-3 sm:mb-4">
+                  <div className="mb-3 sm:mb-4 flex items-center gap-2 flex-wrap">
                     <span className="inline-block bg-[#3FA9F5] text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full font-bold text-xs sm:text-sm">{day.day}</span>
+                    <span className="inline-block bg-[#FCEE21] text-gray-900 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full font-black text-xs sm:text-sm">{day.date}</span>
                   </div>
+                  <p className="text-xs sm:text-sm text-gray-500 font-semibold mb-2">{day.weekday}</p>
                   <h3 className="text-sm sm:text-xl font-black text-gray-900 mb-2 sm:mb-4 leading-snug">{day.theme}</h3>
                   <div className="space-y-1.5 sm:space-y-2 flex-1">
                     {day.highlights.map((item, j) => (
