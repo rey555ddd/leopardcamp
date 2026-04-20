@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const IMAGES = {
   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/leopard_logo_f5505ee4.png",
   hero: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/hero_image_v2-gdhdjMvsXkgaHr2xYBrbSs.webp",
-  coach: "/coach/coach-profile.webp",
+  coach: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663032574653/HucFMfPfbOWFMxEe.png",
   confidence: "/coach/teaching-confidence.webp",
   teamwork: "/coach/teaching-teamwork.webp",
   achievement: "https://d2xsxph8kpxj0f.cloudfront.net/310419663032574653/85tmRxight7MqCZuJtwyGq/award_ceremony_14be78cd.png",
