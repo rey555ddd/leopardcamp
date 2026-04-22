@@ -45,6 +45,8 @@ function generateXlsxXml(rows: Record<string, any>[]): string {
     { key: "emergencyName", label: "緊急聯絡人姓名" },
     { key: "emergencyPhone", label: "緊急聯絡人電話" },
     { key: "parentLineId", label: "家長Line ID/電話" },
+    { key: "paymentLast5", label: "帳號後五碼" },
+    { key: "note", label: "備註" },
     { key: "createdAt", label: "報名時間" },
   ];
 

@@ -17,6 +17,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       "childIdNumber", "jerseySize", "jerseyName", "jerseyNumber",
       "dietType", "guardianName", "guardianPhone",
       "emergencyName", "emergencyPhone", "parentLineId",
+      "paymentLast5",
     ];
 
     for (const field of required) {
@@ -32,8 +33,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         dietType, dietNote,
         guardianName, guardianPhone,
         emergencyName, emergencyPhone,
-        parentLineId
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        parentLineId, paymentLast5, note
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
     await stmt.bind(
@@ -52,6 +53,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       body.emergencyName,
       body.emergencyPhone,
       body.parentLineId,
+      body.paymentLast5,
+      body.note || null,
     ).run();
 
     return Response.json({ success: true, message: "報名成功" });

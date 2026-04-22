@@ -26,6 +26,8 @@ const initialForm = {
   emergencyName: "",
   emergencyPhone: "",
   parentLineId: "",
+  paymentLast5: "",
+  note: "",
 };
 
 export default function Register() {
@@ -63,6 +65,11 @@ export default function Register() {
     if (!form.emergencyName.trim()) errs.emergencyName = "請填寫緊急聯絡人姓名";
     if (!form.emergencyPhone.trim()) errs.emergencyPhone = "請填寫緊急聯絡人電話";
     if (!form.parentLineId.trim()) errs.parentLineId = "請填寫 Line ID 或電話號碼";
+    if (!form.paymentLast5.trim()) {
+      errs.paymentLast5 = "請填寫轉帳帳號後五碼";
+    } else if (!/^\d{5}$/.test(form.paymentLast5.trim())) {
+      errs.paymentLast5 = "帳號後五碼須為 5 位數字";
+    }
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -430,6 +437,59 @@ export default function Register() {
                   </p>
                   {errors.parentLineId && <p className="text-red-500 text-xs mt-1">{errors.parentLineId}</p>}
                 </div>
+              </div>
+            </div>
+
+            {/* Section 5: 繳費資訊 */}
+            <div className="bg-white rounded-2xl shadow-md p-6 sm:p-8">
+              <h2 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
+                <span className="w-8 h-8 bg-[#3FA9F5] text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
+                繳費資訊
+              </h2>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5">
+                <p className="text-sm text-blue-800 font-semibold mb-1">📌 轉帳繳費說明</p>
+                <p className="text-xs text-blue-700 leading-relaxed">
+                  請於報名後完成轉帳，並填寫您匯款帳號後五碼，方便工作人員核對款項。
+                </p>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">
+                  轉帳帳號後五碼 *
+                </label>
+                <input
+                  type="text"
+                  name="paymentLast5"
+                  value={form.paymentLast5}
+                  onChange={handleChange}
+                  className={fieldClass("paymentLast5")}
+                  placeholder="例：12345"
+                  maxLength={5}
+                  inputMode="numeric"
+                  pattern="\d{5}"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  請填寫您轉帳銀行帳號的後 5 位數字，用於核對款項
+                </p>
+                {errors.paymentLast5 && <p className="text-red-500 text-xs mt-1">{errors.paymentLast5}</p>}
+              </div>
+            </div>
+
+            {/* Section 6: 其他備註 */}
+            <div className="bg-white rounded-2xl shadow-md p-6 sm:p-8">
+              <h2 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-2">
+                <span className="w-8 h-8 bg-[#FCEE21] text-gray-900 rounded-full flex items-center justify-center text-sm font-bold">6</span>
+                其他備註
+              </h2>
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-1">備註說明 <span className="text-gray-400 font-normal">（選填）</span></label>
+                <textarea
+                  name="note"
+                  value={form.note}
+                  onChange={handleChange}
+                  className={fieldClass("note")}
+                  placeholder="如有任何特殊需求或想告知工作人員的事項，請填寫於此"
+                  rows={3}
+                />
               </div>
             </div>
 

@@ -15,5 +15,7 @@ CREATE TABLE IF NOT EXISTS registrations (
   emergencyName TEXT NOT NULL,
   emergencyPhone TEXT NOT NULL,
   parentLineId TEXT NOT NULL,
+  paymentLast5 TEXT NOT NULL,
+  note TEXT,
   createdAt TEXT NOT NULL DEFAULT (datetime('now'))
 );
