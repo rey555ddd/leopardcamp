@@ -65,9 +65,7 @@ export default function Register() {
     if (!form.emergencyName.trim()) errs.emergencyName = "請填寫緊急聯絡人姓名";
     if (!form.emergencyPhone.trim()) errs.emergencyPhone = "請填寫緊急聯絡人電話";
     if (!form.parentLineId.trim()) errs.parentLineId = "請填寫 Line ID 或電話號碼";
-    if (!form.paymentLast5.trim()) {
-      errs.paymentLast5 = "請填寫轉帳帳號後五碼";
-    } else if (!/^\d{5}$/.test(form.paymentLast5.trim())) {
+    if (form.paymentLast5.trim() && !/^\d{5}$/.test(form.paymentLast5.trim())) {
       errs.paymentLast5 = "帳號後五碼須為 5 位數字";
     }
     setErrors(errs);
@@ -446,15 +444,60 @@ export default function Register() {
                 <span className="w-8 h-8 bg-[#3FA9F5] text-white rounded-full flex items-center justify-center text-sm font-bold">5</span>
                 繳費資訊
               </h2>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5">
-                <p className="text-sm text-blue-800 font-semibold mb-1">📌 轉帳繳費說明</p>
-                <p className="text-xs text-blue-700 leading-relaxed">
-                  請於報名後完成轉帳，並填寫您匯款帳號後五碼，方便工作人員核對款項。
-                </p>
+
+              {/* 費用說明 */}
+              <div className="bg-gray-50 rounded-xl p-4 mb-5">
+                <p className="text-xs text-gray-500 text-center mb-3">活動費用（每位學員）</p>
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="bg-gradient-to-br from-[#FCEE21]/40 to-[#FCEE21]/20 border-2 border-[#FCEE21] rounded-lg p-3 text-center relative">
+                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#FCEE21] text-gray-900 text-[10px] font-black px-2 py-0.5 rounded-full whitespace-nowrap">早鳥優惠</span>
+                    <p className="text-2xl font-black text-gray-900 mt-1">NT$ 11,500</p>
+                    <p className="text-[11px] text-gray-600 mt-1">5 / 20 前完成匯款</p>
+                  </div>
+                  <div className="bg-white border-2 border-gray-200 rounded-lg p-3 text-center">
+                    <p className="text-[10px] text-gray-500 font-bold mb-1">原價</p>
+                    <p className="text-2xl font-black text-gray-700 mt-1">NT$ 12,800</p>
+                    <p className="text-[11px] text-gray-600 mt-1">6 / 15 前完成匯款</p>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 text-center">2026 / 7 / 23 – 7 / 26　四日營</p>
               </div>
+
+              {/* 匯款帳號 */}
+              <div className="border-2 border-[#3FA9F5]/30 rounded-xl p-5 mb-5">
+                <p className="text-sm font-black text-gray-800 mb-4 flex items-center gap-2">
+                  <span>💳</span> 匯款帳號
+                </p>
+                <div className="space-y-2 text-sm mb-4">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">銀行</span>
+                    <span className="font-bold text-gray-900">（822）中國信託　中華分行</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">戶名</span>
+                    <span className="font-bold text-gray-900">豹子腿工作室</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText("440540628159");
+                      const el = document.getElementById("copy-btn-label");
+                      if (el) { el.textContent = "已複製 ✓"; setTimeout(() => { el.textContent = "點擊複製"; }, 2000); }
+                    } catch { /* ignore */ }
+                  }}
+                  className="w-full bg-yellow-50 hover:bg-yellow-100 border-2 border-yellow-300 rounded-lg py-3 flex items-center justify-center gap-3 transition-colors"
+                >
+                  <span className="font-mono font-black text-gray-900 tracking-widest text-lg">4405-4062-8159</span>
+                  <span id="copy-btn-label" className="text-xs text-gray-500 border border-gray-300 rounded px-2 py-0.5">點擊複製</span>
+                </button>
+              </div>
+
+              {/* 帳號後五碼 */}
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-1">
-                  轉帳帳號後五碼 *
+                  匯款帳號後五碼 <span className="text-gray-400 font-normal">（選填，方便核對款項）</span>
                 </label>
                 <input
                   type="text"
@@ -462,13 +505,13 @@ export default function Register() {
                   value={form.paymentLast5}
                   onChange={handleChange}
                   className={fieldClass("paymentLast5")}
-                  placeholder="例：12345"
+                  placeholder="例：28159"
                   maxLength={5}
                   inputMode="numeric"
                   pattern="\d{5}"
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  請填寫您轉帳銀行帳號的後 5 位數字，用於核對款項
+                  填寫您轉帳帳戶的後 5 碼，有助於工作人員快速核對款項
                 </p>
                 {errors.paymentLast5 && <p className="text-red-500 text-xs mt-1">{errors.paymentLast5}</p>}
               </div>

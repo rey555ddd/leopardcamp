@@ -24,6 +24,8 @@ interface Registration {
   emergencyName: string;
   emergencyPhone: string;
   parentLineId: string;
+  paymentLast5: string | null;
+  note: string | null;
   createdAt: string;
 }
 
@@ -339,6 +341,18 @@ export default function AdminRegistrations() {
                     <span className="text-gray-500">Line ID：</span>
                     <span className="font-semibold text-gray-900">{reg.parentLineId}</span>
                   </div>
+                  <div>
+                    <span className="text-gray-500">帳號後五碼：</span>
+                    <span className={`font-semibold ${reg.paymentLast5 ? "text-green-700" : "text-gray-400"}`}>
+                      {reg.paymentLast5 || "未填寫"}
+                    </span>
+                  </div>
+                  {reg.note && (
+                    <div className="sm:col-span-2 lg:col-span-3">
+                      <span className="text-gray-500">備註：</span>
+                      <span className="font-semibold text-gray-900">{reg.note}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
