@@ -8,5 +8,5 @@ database_name = "leopardcamp-db"
 database_id = "62924918-55d7-4996-bdfc-fc8a34eabc05"
 
 [vars]
-ADMIN_USERNAME = "ABC2026"
-ADMIN_PASSWORD = "2026ABC"
+# ADMIN_USERNAME / ADMIN_PASSWORD：已從 wrangler.toml 移除（資安修補 2026-04-27）
+# 改用 CF Pages 環境變數加密區（Pages → Settings → Environment variables → 標記 secret）
