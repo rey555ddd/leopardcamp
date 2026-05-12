@@ -288,15 +288,15 @@ export default function Register() {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-1">年齡 *</label>
-                    <input type="number" name="childAge" value={form.childAge} onChange={handleChange} className={fieldClass("childAge")} placeholder="例：10" min="8" max="16" />
+                    <input type="number" name="childAge" value={form.childAge} onChange={handleChange} className={fieldClass("childAge")} placeholder="例：10" min="1" />
                     {errors.childAge && <p className="text-red-500 text-xs mt-1">{errors.childAge}</p>}
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-1">出生年月日 *</label>
-                  <input type="date" name="childBirthday" value={form.childBirthday} onChange={handleChange} className={fieldClass("childBirthday")} min="2010-01-01" max="2018-08-31" />
+                  <input type="date" name="childBirthday" value={form.childBirthday} onChange={handleChange} className={fieldClass("childBirthday")} />
                   <p className="text-xs text-gray-500 mt-1">
-                    保團體保險時使用。僅接受 2010/01/01 至 2018/08/31 出生（即年滿 8~16 歲，至少於 2026/08/31 前滿 8 歲）的學員報名。
+                    保團體保險時使用。
                   </p>
                   {errors.childBirthday && <p className="text-red-500 text-xs mt-1">{errors.childBirthday}</p>}
                 </div>
